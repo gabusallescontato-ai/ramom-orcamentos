@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Peça seu orçamento de vídeo e abra a proposta com seu código, no celular ou no computador.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314171A'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23C9301F'/%3E%3C/svg%3E">
+<title>Ramom Orçamentos</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<style id="rs-css">
+/* Layout: uma coluna de leitura (max 1080px). A claquete é a peça de assinatura: entrada do código e capa da proposta. */
+:root{
+  --bg:#F1F3EF;--surface:#FFFFFF;--soft:#E5E9E2;--ink:#14171A;--muted:#566068;--line:#CDD3CC;
+  --accent:#C9301F;--accent-ink:#FFFFFF;--ok:#1B7A4B;--slate:#14171A;--slate-ink:#F4F5F2;--slate-mut:#98A1A6;
+  --f-d:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--f-b:Figtree,"Segoe UI",system-ui,sans-serif;--f-m:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#101315;--surface:#191D21;--soft:#22272C;--ink:#ECEFEA;--muted:#9AA4AB;--line:#30373D;
+  --accent:#FF6450;--accent-ink:#1B0A07;--ok:#5CC592;--slate:#050607;--slate-ink:#F4F5F2;--slate-mut:#98A1A6;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#101315;--surface:#191D21;--soft:#22272C;--ink:#ECEFEA;--muted:#9AA4AB;--line:#30373D;
+  --accent:#FF6450;--accent-ink:#1B0A07;--ok:#5CC592;--slate:#050607;--slate-ink:#F4F5F2;--slate-mut:#98A1A6;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--f-b);margin:0}
+.wrap{max-width:1080px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+main.wrap{padding-block:28px 56px;display:grid;gap:36px}
+main.wrap>*{min-width:0}
+h1,h2,h3{font-family:var(--f-d);text-transform:uppercase;margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-weight:700;font-size:clamp(2.5rem,7.5vw,4.4rem);line-height:.95}
+h2{font-weight:600;font-size:1.7rem;line-height:1.05}
+h3{font-weight:600;font-size:1.2rem;margin-top:8px}
+p{margin:0}
+a{color:inherit}
+.eyebrow,.meta,.chip,figcaption{font-family:var(--f-m)}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.lead{font-size:1.13rem;color:var(--muted);max-width:56ch}
+.meta{font-size:.8rem;color:var(--muted)}
+.stack{display:grid;gap:18px}
+.stack>*{min-width:0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.narrow{max-width:640px;display:grid;gap:18px}
+.top{border-bottom:1px solid var(--line)}
+.bar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px 20px;padding-block:14px}
+.brand{font:700 1.5rem/1 var(--f-d);text-transform:uppercase;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.brand small{font:400 .72rem var(--f-m);letter-spacing:.06em;color:var(--muted);text-transform:none}
+.rec{width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block}
+nav{display:flex;gap:18px;font-weight:600;font-size:.95rem}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-block:20px 32px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:.78rem 1.2rem;background:var(--accent);color:var(--accent-ink);border:2px solid var(--accent);border-radius:6px;font:600 1rem var(--f-b);text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.sm{padding:.42rem .8rem;font-size:.9rem}
+.btn[disabled]{opacity:.55;cursor:default}
+.lnk{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
+.lnk.danger{color:var(--muted)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input,select,textarea{width:100%;padding:.68rem .8rem;border:1.5px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:400 16px var(--f-b)}
+textarea{resize:vertical;line-height:1.45}
+.fld{display:grid;gap:6px;border:0;padding:0;margin:0;min-width:0}
+.fld>span,.fld legend{font-weight:600;padding:0}
+.fld legend{margin-bottom:6px}
+.fld small{color:var(--muted);font-size:.86rem}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.opt{position:relative;cursor:pointer}
+.opt input{position:absolute;opacity:0;width:100%;height:100%;inset:0;margin:0;cursor:pointer}
+.opt span{display:block;padding:.55rem .9rem;border:1.5px solid var(--line);border-radius:6px;background:var(--surface)}
+.opt input:checked+span{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.opt input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+.err{color:var(--accent);font-weight:600}
+.note{background:var(--soft);padding:10px 14px;border-radius:6px;font-size:.93rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:14px;min-width:0}
+.chip{display:inline-block;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .5rem;border:1px solid currentColor;border-radius:4px;color:var(--muted)}
+.chip.st-enviado{color:var(--accent)}.chip.st-aprovado{color:var(--ok)}
+/* home */
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:center;padding-block:20px}
+.hero-t{display:grid;gap:18px}
+.slate{background:var(--slate);color:var(--slate-ink);border-radius:10px;overflow:hidden;min-width:0}
+.clap{height:36px;background:repeating-linear-gradient(-60deg,var(--slate-ink) 0 26px,var(--slate) 26px 52px);border-bottom:3px solid var(--slate-ink)}
+.slate-b{padding:22px;display:grid;gap:12px}
+.slate label{font:600 1.6rem/1 var(--f-d);text-transform:uppercase;letter-spacing:.02em}
+.slate input{background:transparent;border:2px solid var(--slate-ink);color:var(--slate-ink);font:500 1.25rem var(--f-m);letter-spacing:.14em;text-align:center;text-transform:uppercase}
+.slate input::placeholder{color:var(--slate-mut)}
+.slate .meta{color:var(--slate-mut)}
+.slate .err{color:#FF8A7A}
+.slate .btn{background:var(--slate-ink);color:var(--slate);border-color:var(--slate-ink)}
+.steps{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s}
+.steps li{counter-increment:s;display:grid;gap:4px;align-content:start;border-top:3px solid var(--ink);padding-top:10px}
+.steps li::before{content:"0" counter(s);font:700 2.2rem/1 var(--f-d);color:var(--accent)}
+.steps b{font-size:1.05rem}
+.steps span{color:var(--muted)}
+/* cliente */
+.phead{display:grid;gap:10px}
+.phead h1{font-size:clamp(2rem,6vw,3.4rem)}
+.grid2{display:grid;grid-template-columns:minmax(0,360px) minmax(0,1fr);gap:28px;align-items:start}
+.pk{display:grid;grid-template-columns:auto 1fr auto;gap:2px 10px;align-items:center;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer}
+.pk.on{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.pk input{width:18px;height:18px;padding:0;accent-color:var(--accent)}
+.pk b{font:700 1.45rem var(--f-d);white-space:nowrap}
+.pk small{grid-column:2/-1;color:var(--muted)}
+.pk em{font:500 .66rem var(--f-m);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.sum{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:3px solid var(--ink);padding-top:10px}
+.sum b{font:700 2.3rem/1 var(--f-d);font-variant-numeric:tabular-nums}
+.seg{display:inline-flex;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--ink);padding:.5rem .9rem;font:600 .92rem var(--f-b);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.pages{display:grid;gap:18px;margin-top:6px}
+.pages.v{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.pages figure{margin:0;display:grid;gap:6px;min-width:0}
+.sheet{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:4px}
+figcaption{font-size:.74rem;color:var(--muted);display:flex;justify-content:space-between;gap:10px}
+/* estúdio */
+.tabs{display:flex;flex-wrap:wrap;gap:6px 20px;border-bottom:1px solid var(--line);padding-bottom:10px;font-weight:600}
+.tabs button{background:none;border:0;padding:4px 0;font:inherit;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent}
+.tabs button[aria-current="true"]{color:var(--ink);border-color:var(--accent)}
+.sync{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;background:var(--soft);padding:10px 14px;border-radius:6px;font-size:.93rem}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;align-items:end}
+.g3>*{min-width:0}
+.lrow{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px 14px;padding:10px 0;border-top:1px solid var(--line)}
+.lrow>div{min-width:0}
+.frow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) 38px;gap:8px}
+.irow,.ihead{display:grid;grid-template-columns:minmax(0,1fr) 70px 108px 108px 38px;gap:8px}
+.ihead{font:500 .7rem var(--f-m);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.irow{padding:8px 0;border-top:1px solid var(--line)}
+.irow .idesc{grid-column:1/-1}
+.prow{display:grid;grid-template-columns:120px minmax(0,1fr) 90px 108px 108px 38px;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
+.prow .idesc{grid-column:1/-1}
+.x{width:38px;height:38px;border:1.5px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font-size:1.2rem;cursor:pointer;align-self:start;margin-top:2px}
+.pkg-ed{display:grid;gap:12px;border:1.5px solid var(--line);border-radius:8px;padding:14px}
+.chk{display:flex;gap:8px;align-items:center;font-weight:600;padding-bottom:.6rem}
+.chk input{width:18px;height:18px;padding:0;accent-color:var(--accent)}
+.tot b{font:700 1.5rem var(--f-d)}
+.tot small{color:var(--muted);margin-left:8px}
+.code{font:500 1.3rem var(--f-m);letter-spacing:.14em}
+.kv{display:grid;grid-template-columns:minmax(0,160px) minmax(0,1fr);gap:4px 14px;margin:0;font-size:.95rem}
+.kv dt{color:var(--muted)}.kv dd{margin:0;overflow-wrap:anywhere}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:6px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;max-width:calc(100% - 32px);z-index:5}
+#toast.on{opacity:1}
+@media (max-width:820px){.hero{grid-template-columns:1fr;gap:28px}.grid2{grid-template-columns:1fr}.steps{grid-template-columns:1fr}}
+@media (max-width:640px){
+  .irow{grid-template-columns:1fr 1fr 1fr 38px}.irow>input:first-child{grid-column:1/-1}.ihead{display:none}
+  .prow{grid-template-columns:1fr 1fr 1fr 38px}.prow>input:nth-child(2){grid-column:1/-1}
+  .frow{grid-template-columns:1fr 38px}.frow>input:first-child{grid-column:1/-1}
+  .kv{grid-template-columns:1fr}.kv dd{margin-bottom:6px}}
+@media (prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+<div id="app"></div>
+<script type="application/json" id="rs-data">{"v":1,"rev":0,"studio":{"name":"Ramom","tagline":"Filmmaker e editor de vídeo","city":"","whats":"","insta":"","link":"https://claude.ai/artifact/BqaQuSJRBUx8Q7ewZLcrth"},"salt":"","vault":null,"pub":{}}</script>
+<script id="rs-app">
+(()=>{'use strict';
+/* ---------- base ---------- */
+const HEAD='<title>Ramom Orçamentos</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">';
+const RESET=':root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}';
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const brl=n=>(Number(n)||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const fdate=iso=>iso?String(iso).split('-').reverse().join('/'):'a combinar';
+const today=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const addDays=(iso,n)=>{const d=new Date(iso+'T12:00:00');d.setDate(d.getDate()+n);return d.toISOString().slice(0,10)};
+const dleft=iso=>Math.round((new Date(iso+'T12:00:00')-new Date(today()+'T12:00:00'))/864e5);
+const uid=()=>Math.random().toString(36).slice(2,9);
+const store=k=>({get(n){try{return JSON.parse(window[k].getItem(n))}catch(e){return null}},set(n,v){try{window[k].setItem(n,JSON.stringify(v))}catch(e){}},del(n){try{window[k].removeItem(n)}catch(e){}}});
+const ls=store('localStorage'),ss=store('sessionStorage');
+const te=new TextEncoder(),td=new TextDecoder();
+const b64=u=>{let s='';for(let i=0;i<u.length;i++)s+=String.fromCharCode(u[i]);return btoa(s).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
+const unb64=s=>{const b=atob(String(s).replace(/-/g,'+').replace(/_/g,'/'));const u=new Uint8Array(b.length);for(let i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u};
+
+/* ---------- cifra: cada cliente só abre o que é dele ---------- */
+const CITER=250000,AITER=300000;
+async function fromRaw(bits){
+  const key=await crypto.subtle.importKey('raw',bits,'AES-GCM',false,['encrypt','decrypt']);
+  const tag=new Uint8Array(bits.length+3);tag.set(bits);tag.set([108,105,100],bits.length);
+  const h=new Uint8Array(await crypto.subtle.digest('SHA-256',tag));
+  return{key,lid:b64(h.slice(0,9)),raw:b64(bits)};
+}
+async function derive(secret,salt,iter){
+  const base=await crypto.subtle.importKey('raw',te.encode(secret),'PBKDF2',false,['deriveBits']);
+  return fromRaw(new Uint8Array(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:te.encode(salt),iterations:iter},base,256)));
+}
+async function seal(key,obj){const iv=crypto.getRandomValues(new Uint8Array(12));return{iv:b64(iv),ct:b64(new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},key,te.encode(JSON.stringify(obj)))))}}
+async function unseal(key,box){return JSON.parse(td.decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(box.iv)},key,unb64(box.ct))))}
+const ALPHA='ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+const newCode=()=>{let s='';crypto.getRandomValues(new Uint8Array(8)).forEach((b,i)=>{s+=ALPHA[b%31];if(i===3)s+='-'});return s};
+const norm=c=>String(c||'').toUpperCase().replace(/[^A-Z0-9]/g,'');
+
+/* ---------- estado ---------- */
+let S=JSON.parse($('#rs-data').textContent),localAhead=false;
+{const l=ls.get('rs-local');if(l&&l.rev>S.rev){S=l;localAhead=true}else if(l)ls.del('rs-local')}
+let A=null,C=null,ART=null,DL=null,canPub=true;
+/* WEB: site comum, fora do Claude. Sem servidor, o orçamento viaja cifrado dentro do link. */
+const WEB=!(window.claude&&window.claude.use);
+let LINK=null,OV=ss.get('rs-st');
+const pickSt=s=>{const o={};['name','tagline','city','whats','insta'].forEach(k=>{if(s&&typeof s[k]==='string')o[k]=s[k].slice(0,80)});return o};
+const pub=()=>(V.name!=='estudio'&&OV&&OV.name?{...S.studio,...OV}:S.studio);
+let D=ls.get('rs-draft')||{t:''};
+const X={code:'',pw:'',pw2:'',imp:'',np:'',err:'',copy:null,ptype:'evento',busy:false};
+const R={};
+let V={name:'inicio',step:0,pid:null,orient:null,adm:{tab:'painel',cid:null,pid:null,prev:false,po:'v'}};
+const VIEWS=['inicio','briefing','orcamento','estudio'];
+const getp=p=>p.split('.').reduce((o,k)=>o==null?o:o[k],R);
+const setp=(p,v)=>{const ks=p.split('.'),last=ks.pop();ks.reduce((o,k)=>o[k],R)[last]=v};
+
+/* ---------- perguntas do briefing: só o que muda o preço ---------- */
+const TYPES={evento:'Evento',youtube:'YouTube',redes:'Reels e redes sociais',institucional:'Institucional ou comercial',outro:'Outro projeto'};
+const STATUS={rascunho:'Rascunho',enviado:'Aguardando resposta',aprovado:'Aprovado',recusado:'Encerrado'};
+const fServ={k:'servico',l:'O que você precisa?',s:'Serviço',t:'choice',o:['Captação e edição','Só captação','Só edição'],re:1,h:'Captação é a gravação. Edição é a montagem do vídeo final.'};
+const fLocal={k:'local',l:'Cidade e local da gravação',s:'Local',t:'text',p:'Ex.: Manaus, salão do Hotel X',if:b=>b.servico!=='Só edição'};
+const fPrazo={k:'prazo',l:'Para quando precisa do material pronto?',s:'Prazo desejado',t:'text',p:'Ex.: até 7 dias depois da gravação'};
+const Q={
+ evento:[
+  {k:'tipoEvento',l:'Que tipo de evento é?',s:'Tipo de evento',t:'choice',o:['Corporativo','Casamento','Aniversário ou festa','Show ou festival','Feira ou congresso','Outro']},
+  {k:'data',l:'Data do evento',s:'Data',t:'date',h:'Ainda não fechou a data? Deixe em branco.'},
+  {k:'local',l:'Cidade e local',s:'Local',t:'text',p:'Ex.: Manaus, salão do Hotel X'},
+  {k:'horas',l:'Quantas horas de cobertura?',s:'Cobertura',u:'h',t:'num',p:'Ex.: 4',h:'Do começo ao fim da gravação.'},
+  {k:'convidados',l:'Quantas pessoas no evento?',s:'Público',t:'choice',o:['Até 50','50 a 100','100 a 300','300 a 1.000','Mais de 1.000']},
+  fServ,
+  {k:'entregas',l:'O que você quer receber?',s:'Entregas',t:'multi',o:['Vídeo resumo (aftermovie)','Vídeo completo','Reels verticais','Imagens de drone','Entrega no mesmo dia']},
+  fPrazo],
+ youtube:[fServ,
+  {k:'minutos',l:'Duração do vídeo final, em minutos',s:'Vídeo final',u:'min',t:'num',p:'Ex.: 12'},
+  {k:'bruto',l:'Quanto material bruto existe?',s:'Material bruto',t:'text',p:'Ex.: 1h20 de gravação, 2 câmeras',h:'Material bruto é tudo o que foi gravado, antes da edição. Pode estimar.',if:b=>b.servico!=='Só captação'},
+  {k:'frequencia',l:'É um vídeo ou um pacote?',s:'Frequência',t:'choice',o:['Um vídeo só','2 a 4 por mês','5 a 8 por mês','Mais de 8 por mês']},
+  {k:'extras',l:'Precisa de algo além da edição?',s:'Extras',t:'multi',o:['Thumbnail (capa)','Legendas','Cortes para Shorts e Reels','Animações e letterings']},
+  fLocal,fPrazo],
+ redes:[fServ,
+  {k:'qtd',l:'Quantos vídeos?',s:'Quantidade',u:'vídeos',t:'num',p:'Ex.: 8'},
+  {k:'segundos',l:'Duração de cada vídeo',s:'Duração',t:'choice',o:['Até 30 s','30 a 60 s','60 a 90 s']},
+  {k:'frequencia',l:'É um pacote único ou todo mês?',s:'Frequência',t:'choice',o:['Pacote único','Todo mês']},
+  {k:'data',l:'Data prevista de gravação',s:'Data',t:'date',if:b=>b.servico!=='Só edição'},
+  fLocal,
+  {k:'extras',l:'Precisa de algo além disso?',s:'Extras',t:'multi',o:['Legendas','Roteiro','Capa do vídeo','Animações']},
+  fPrazo],
+ institucional:[fServ,
+  {k:'minutos',l:'Duração do vídeo final, em minutos',s:'Vídeo final',u:'min',t:'num',p:'Ex.: 2'},
+  {k:'diarias',l:'Quantos dias de gravação você imagina?',s:'Dias de gravação',t:'choice',o:['Meio dia','1 dia','2 dias','3 ou mais','Não sei'],if:b=>b.servico!=='Só edição'},
+  {k:'data',l:'Data prevista de gravação',s:'Data',t:'date',if:b=>b.servico!=='Só edição'},
+  fLocal,
+  {k:'recursos',l:'O que o vídeo vai precisar?',s:'Recursos',t:'multi',o:['Entrevistas','Roteiro','Locução','Atores ou modelos','Drone','Animações']},
+  {k:'veiculacao',l:'Onde o vídeo vai passar?',s:'Veiculação',t:'multi',o:['Instagram e TikTok','YouTube','Site','TV ou telão','Anúncios pagos']},
+  fPrazo],
+ outro:[fServ,{k:'descricao',l:'Conte o que você precisa',s:'Pedido',t:'area',p:'Quanto mais detalhe, mais certeiro o orçamento.'},{k:'data',l:'Data prevista',s:'Data',t:'date'},fLocal,fPrazo]};
+const COMMON=[
+ {k:'objetivo',l:'Qual é o objetivo do vídeo?',s:'Objetivo',t:'area',p:'Ex.: divulgar a próxima edição do evento'},
+ {k:'refs',l:'Links de referência',s:'Referências',t:'area',p:'Cole links do Instagram, YouTube ou TikTok de vídeos que você gostou, um por linha',h:'Um exemplo vale mais que uma descrição longa.'},
+ {k:'verba',l:'Faixa de investimento',s:'Investimento previsto',t:'choice',o:['Até R$ 1.000','R$ 1.000 a 3.000','R$ 3.000 a 6.000','Acima de R$ 6.000','Prefiro não dizer'],h:'Opcional. Ajuda a propor o pacote certo.'},
+ {k:'formato',l:'Como prefere receber a proposta?',s:'Formato da proposta',t:'choice',o:['Vertical (celular)','Horizontal (computador)','Tanto faz'],h:'Você pode trocar depois, na página do orçamento.'},
+ {k:'obs',l:'Algo mais que seja importante?',s:'Observações',t:'area'}];
+const val=(b,f)=>{let v=b[f.k];if(Array.isArray(v))v=v.join(', ');if(f.t==='date'&&v)v=fdate(v);return v===''||v==null?'':String(v)+(f.u?' '+f.u:'')};
+const active=(b,list)=>list.filter(f=>!f.if||f.if(b));
+const factsOf=b=>active(b,Q[b.t]||[]).map(f=>[f.s,val(b,f)]).filter(f=>f[1]);
+const allFacts=b=>[...active(b,Q[b.t]||[]),...COMMON].map(f=>[f.s,val(b,f)]).filter(f=>f[1]);
+function briefMsg(b){
+  const clean={};Object.keys(b).forEach(k=>{const v=b[k];if(v!==''&&v!=null&&!(Array.isArray(v)&&!v.length))clean[k]=v});
+  return['*Pedido de orçamento · '+(TYPES[b.t]||'')+'*','Nome: '+(b.nome||''),b.empresa?'Empresa: '+b.empresa:'',...allFacts(b).map(f=>f[0]+': '+f[1]),'','Código do pedido (não apague): BRF1.'+b64(te.encode(JSON.stringify(clean)))].filter((l,i)=>l||i>2).join('\n');
+}
+const wa=msg=>'https://wa.me/'+String(pub().whats||'').replace(/\D/g,'')+'?text='+encodeURIComponent(msg);
+
+/* ---------- tabela de preços e modelos ---------- */
+function defaultVault(){return{seq:0,clients:[],
+ prices:[
+  ['cap-diaria','Captação','Diária de captação','Até 8 horas, com câmera, áudio e luz.','diária',1500],
+  ['cap-meia','Captação','Meia diária de captação','Até 4 horas, com câmera, áudio e luz.','meia diária',900],
+  ['cap-hora','Captação','Hora extra de captação','Cada hora além do combinado.','hora',220],
+  ['cap-2cam','Captação','Segundo cinegrafista','Mais um profissional e uma câmera.','diária',800],
+  ['drone','Captação','Imagens de drone','Tomadas aéreas, quando o local permite.','un',500],
+  ['ed-after','Edição','Vídeo resumo (aftermovie)','Até 1min30, com trilha e cor tratada.','un',900],
+  ['ed-full','Edição','Vídeo completo','Registro integral, com cortes e áudio tratado.','un',1200],
+  ['ed-reel','Edição','Reel vertical','Até 60 segundos, pronto para postar.','un',250],
+  ['ed-yt15','Edição','Edição para YouTube até 15 min','Cortes, trilha, cor e áudio tratado.','vídeo',500],
+  ['ed-yt30','Edição','Edição para YouTube até 30 min','Cortes, trilha, cor e áudio tratado.','vídeo',800],
+  ['ed-inst','Edição','Edição do vídeo institucional','Até 2 minutos, com trilha e cor tratada.','un',1500],
+  ['thumb','Extras','Thumbnail (capa)','Arte da capa do vídeo.','un',80],
+  ['legenda','Extras','Legendas','Legendas revisadas no vídeo.','vídeo',100],
+  ['motion','Extras','Animações e letterings','Vinheta, nomes e dados na tela.','un',300],
+  ['roteiro','Extras','Roteiro','Estrutura e texto do vídeo.','un',400],
+  ['locucao','Extras','Locução','Voz profissional gravada em estúdio.','un',350],
+  ['expressa','Extras','Entrega expressa','Vídeo pronto em até 48 horas.','un',400]
+ ].map(p=>({id:p[0],cat:p[1],name:p[2],desc:p[3],unit:p[4],price:p[5],cost:0})),
+ terms:{signalPct:50,validDays:7,revisions:2,extraRev:150,extraHour:220,
+  payment:'PIX ou transferência. Saldo na entrega do vídeo final.',
+  delivery:'Até 7 dias úteis depois da gravação ou do recebimento do material.',
+  cancel:'Remarcação sem custo com 7 dias de antecedência. Em caso de cancelamento, o sinal cobre a reserva da data.',
+  notIncluded:'Deslocamento para fora da cidade\nTrilha sonora composta sob encomenda\nMudanças de escopo depois da aprovação',notes:''}}}
+function newProp(type,b,v){
+  const t=v.terms,it=(id,qty)=>{const p=v.prices.find(x=>x.id===id);return p?{name:p.name,desc:p.desc,qty:qty||1,price:p.price,cost:p.cost||0,cat:p.cat}:null};
+  const mk=(name,desc,ids)=>({name,desc,discount:0,items:ids.map(x=>Array.isArray(x)?it(x[0],x[1]):it(x)).filter(Boolean)});
+  let pk=[],ad=[],title='Projeto de vídeo';
+  if(type==='evento'){const h=+b.horas||0,cap=h&&h<=4?'cap-meia':'cap-diaria',ex=h>8?[['cap-hora',h-8]]:[],big=/300|1\.000/.test(b.convidados||'');
+    pk=[mk('Essencial','O registro do evento em um vídeo resumo.',[cap,...ex,'ed-after']),
+        mk('Recomendado','Vídeo resumo e cortes verticais para as redes.',[cap,...ex,...(big?['cap-2cam']:[]),'ed-after',['ed-reel',3]]),
+        mk('Completo','Duas câmeras, drone e todos os formatos.',[cap,...ex,'cap-2cam','drone','ed-after','ed-full',['ed-reel',3]])];
+    ad=['drone','ed-reel','expressa'];title=(b.tipoEvento&&b.tipoEvento!=='Outro'?'Evento '+b.tipoEvento.toLowerCase():'Cobertura de evento')+(b.local?' · '+b.local.split(',')[0]:'')}
+  if(type==='youtube'){const ed=(+b.minutos||0)>15?'ed-yt30':'ed-yt15',cap=/aptação/.test(b.servico||'')?['cap-meia']:[];
+    pk=[mk('Essencial','Edição pronta para publicar.',[...cap,ed]),mk('Recomendado','Edição com capa e legendas.',[...cap,ed,'thumb','legenda']),mk('Completo','Edição, capa, legendas e cortes para Shorts.',[...cap,ed,'thumb','legenda',['ed-reel',3],'motion'])];
+    ad=['ed-reel','motion','expressa'];title='Vídeo para YouTube'}
+  if(type==='redes'){const n=+b.qtd||4;
+    pk=[mk('Essencial',n+' vídeos verticais.',['cap-meia',['ed-reel',n]]),mk('Recomendado',n+' vídeos verticais com legendas.',['cap-meia',['ed-reel',n],['legenda',n]]),mk('Completo','Dia inteiro de gravação e o dobro de vídeos.',['roteiro','cap-diaria',['ed-reel',n*2],['legenda',n*2]])];
+    ad=['roteiro','motion','expressa'];title='Vídeos para redes sociais'}
+  if(type==='institucional'){
+    pk=[mk('Essencial','Um dia de gravação e o vídeo final.',['cap-diaria','ed-inst']),mk('Recomendado','Com roteiro e animações.',['roteiro','cap-diaria','ed-inst','motion']),mk('Completo','Dois dias, locução e versões para as redes.',['roteiro',['cap-diaria',2],'ed-inst','motion','locucao',['ed-reel',3]])];
+    ad=['drone','locucao','ed-reel'];title='Vídeo institucional'}
+  if(b.servico==='Só captação')pk.forEach(k=>k.items=k.items.filter(i=>i.cat==='Captação'));
+  if(b.servico==='Só edição')pk.forEach(k=>k.items=k.items.filter(i=>i.cat!=='Captação'));
+  const seen=new Set();pk=pk.filter(k=>{const s=JSON.stringify(k.items);if(!k.items.length||seen.has(s))return false;seen.add(s);return true});
+  if(!pk.length)pk=[{name:'Proposta',desc:'',discount:0,items:[{name:'',desc:'',qty:1,price:0,cost:0}]}];
+  if(pk.length===1)pk[0].name='Proposta';
+  v.seq=(v.seq||0)+1;
+  return{id:uid(),num:new Date().getFullYear()+'-'+String(v.seq).padStart(3,'0'),title,type,status:'rascunho',ver:1,created:today(),validUntil:addDays(today(),+t.validDays||7),
+   intro:b.objetivo||'',facts:factsOf({...b,t:type}),packages:pk,rec:Math.min(1,pk.length-1),
+   addons:ad.map(id=>it(id)).filter(Boolean).map(a=>({name:a.name,desc:a.desc,price:a.price})),
+   notIncluded:t.notIncluded||'',orient:/^Vert/.test(b.formato||'')?'v':/^Horiz/.test(b.formato||'')?'h':'',showPrices:false,
+   terms:{signalPct:t.signalPct,revisions:t.revisions,extraRev:t.extraRev,extraHour:t.extraHour,payment:t.payment,delivery:t.delivery,cancel:t.cancel,notes:t.notes||''}};
+}
+const pkgTotal=k=>Math.max(0,k.items.reduce((s,i)=>s+(+i.qty||0)*(+i.price||0),0)-(+k.discount||0));
+const pkgCost=k=>k.items.reduce((s,i)=>s+(+i.qty||0)*(+i.cost||0),0);
+const totalOf=(P,s)=>pkgTotal(P.packages[s.pkg])+s.addons.reduce((t,i)=>t+(+P.addons[i].price||0),0);
+const publicClient=c=>({name:c.name,props:c.proposals.filter(p=>p.status!=='rascunho').map(p=>{const q=JSON.parse(JSON.stringify(p));q.packages.forEach(k=>k.items.forEach(i=>{delete i.cost;delete i.cat}));return q})});
+async function pack(obj){const raw=te.encode(JSON.stringify(obj));if(window.CompressionStream){try{return{z:1,u:new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new CompressionStream('deflate-raw'))).arrayBuffer())}}catch(e){}}return{z:0,u:raw}}
+async function unpack(z,u){return JSON.parse(td.decode(z?await new Response(new Blob([u]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer():u))}
+async function makeLink(c){const k=await derive(norm(c.code),'c:'+S.salt,CITER),p=await pack({s:pickSt(S.studio),c:publicClient(c)}),iv=crypto.getRandomValues(new Uint8Array(12));
+  return location.origin+location.pathname+'#o='+p.z+'.'+S.salt+'.'+b64(iv)+'.'+b64(new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},k.key,p.u)))}
+const siteLink=async c=>WEB?makeLink(c):(S.studio.link||'[cole aqui o link do site]');
+function saveFile(filename,data){if(DL)return DL.save({filename,data});if(!WEB)return Promise.reject({code:'unavailable'});
+  const a=document.createElement('a'),url=URL.createObjectURL(data instanceof Blob?data:new Blob([data]));a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);return Promise.resolve()}
+function demo(){const v=defaultVault(),b={t:'evento',tipoEvento:'Corporativo',data:addDays(today(),30),local:'Manaus, Centro de Convenções',horas:6,convidados:'300 a 1.000',servico:'Captação e edição',entregas:['Vídeo resumo (aftermovie)','Reels verticais'],prazo:'Até 7 dias depois do evento',objetivo:'Registrar a convenção e ter material para divulgar a próxima edição.'};
+  const P=newProp('evento',b,v);P.status='enviado';P.title='Convenção de vendas · Manaus';P.num='EXEMPLO';return{name:'Cliente de exemplo',props:[P]}}
+const SELMEM={};
+function getSel(P){const s=SELMEM[P.id]||(ls.get('rs-sel')||{})[P.id]||{};return{pkg:Number.isInteger(s.pkg)&&P.packages[s.pkg]?s.pkg:Math.min(P.rec||0,P.packages.length-1),addons:(s.addons||[]).filter(i=>P.addons[i])}}
+function setSel(P,s){SELMEM[P.id]=s;const all=ls.get('rs-sel')||{};all[P.id]=s;ls.set('rs-sel',all)}
+function validTxt(P){if(P.status==='aprovado')return'aprovado';const d=dleft(P.validUntil);return d>1?'vale até '+fdate(P.validUntil)+' (faltam '+d+' dias)':d===1?'vale até amanhã':d===0?'vence hoje':'venceu em '+fdate(P.validUntil)+', peça uma atualização'}
+
+/* ---------- páginas da proposta, desenhadas em canvas (o que se vê é o que se baixa) ---------- */
+const INK='#14171A',PAPER='#F4F5F2',RED='#C9301F',MUT='#5A636B',LINE='#CDD3CC',FAINT='#98A1A6';
+const FD='"Barlow Condensed","Arial Narrow",Arial,sans-serif',FB='Figtree,"Segoe UI",Arial,sans-serif',FMO='"IBM Plex Mono",Consolas,monospace';
+const FM={v:{o:'v',w:1080,h:1920,cols:1,m:80,gap:0,top:190,bot:150,b:36,s:26,h2:84,ti:150,pr:88},
+          h:{o:'h',w:1920,h:1080,cols:2,m:100,gap:90,top:190,bot:125,b:27,s:20,h2:64,ti:140,pr:68}};
+const fo=(w,s,f)=>w+' '+s+'px '+f;
+const sp=(c,px)=>{if('letterSpacing' in c)c.letterSpacing=px+'px'};
+function wrapT(c,text,maxW){const out=[];String(text??'').split('\n').forEach(par=>{let line='';par.split(/\s+/).filter(Boolean).forEach(word=>{
+  while(word.length>1&&c.measureText(word).width>maxW){let n=word.length;while(n>1&&c.measureText(word.slice(0,n)).width>maxW)n--;if(line){out.push(line);line=''}out.push(word.slice(0,n));word=word.slice(n)}
+  const t=line?line+' '+word:word;if(!line||c.measureText(t).width<=maxW)line=t;else{out.push(line);line=word}});if(line)out.push(line)});return out}
+const lines=(c,L,x,y,fs,lh)=>L.forEach((l,i)=>c.fillText(l,x,y+i*lh+(lh-fs)/2+fs*.8));
+const tx=(text,o)=>{let L;return{after:o.after,pre:o.pre,keep:o.keep,
+  measure(c,w){c.font=o.f;L=wrapT(c,text,w);return L.length*o.lh},
+  draw(c,x,y){c.font=o.f;c.fillStyle=o.col||INK;lines(c,L,x,y,o.fs,o.lh)}}};
+const head=(n,label,fm)=>({keep:true,pre:fm.b*1.5,after:fm.b*.8,
+  measure(){return fm.s*1.7+fm.h2+fm.b*.4},
+  draw(c,x,y,w){c.font=fo(500,fm.s,FMO);sp(c,3);c.fillStyle=RED;c.fillText('CENA '+String(n).padStart(2,'0'),x,y+fm.s);sp(c,0);
+    c.font=fo(700,fm.h2,FD);c.fillStyle=INK;c.fillText(label.toUpperCase(),x,y+fm.s*1.7+fm.h2*.8);c.fillRect(x,y+fm.s*1.7+fm.h2+fm.b*.25,w,4)}});
+const sub=(label,fm)=>({keep:true,pre:fm.b*.9,after:fm.b*.3,measure(){return fm.s*1.5},
+  draw(c,x,y){c.font=fo(500,fm.s,FMO);sp(c,2.5);c.fillStyle=MUT;c.fillText(label.toUpperCase(),x,y+fm.s);sp(c,0)}});
+const kv=(k,v,fm)=>{let L,H;const kw=.34,lh=fm.b*1.42;return{after:0,
+  measure(c,w){c.font=fo(500,fm.b,FB);L=wrapT(c,v,w*(1-kw));H=Math.max(1,L.length)*lh+fm.b*.9;return H},
+  draw(c,x,y,w){let s=fm.s;c.font=fo(500,s,FMO);sp(c,1.5);const K=k.toUpperCase();while(s>12&&c.measureText(K).width>w*kw-16){s--;c.font=fo(500,s,FMO)}
+    c.fillStyle=MUT;c.fillText(K,x,y+fm.b*.45+(lh-fm.b)/2+fm.b*.78);sp(c,0);
+    c.font=fo(500,fm.b,FB);c.fillStyle=INK;lines(c,L,x+w*kw,y+fm.b*.45,fm.b,lh);c.fillStyle=LINE;c.fillRect(x,y+H-2,w,2)}}};
+const bul=(text,fm)=>{let L;const lh=fm.b*1.4;return{after:fm.b*.2,
+  measure(c,w){c.font=fo(400,fm.b,FB);L=wrapT(c,text,w-fm.b*1.2);return L.length*lh},
+  draw(c,x,y){c.fillStyle=MUT;c.fillRect(x,y+lh*.5-2,fm.b*.55,4);c.font=fo(400,fm.b,FB);c.fillStyle=INK;lines(c,L,x+fm.b*1.2,y,fm.b,lh)}}};
+const pkg=(k,o,fm)=>{let H,DL=[],IL=[];const pad=fm.b,ns=fm.h2*.74,is=fm.b*.94,ds=fm.s*1.05;return{after:fm.b*.8,
+  measure(c,w){const iw=w-pad*2;let h=pad+fm.s*1.6+ns*1.12;
+    c.font=fo(400,fm.b*.92,FB);DL=k.desc?wrapT(c,k.desc,iw):[];h+=DL.length*fm.b*.92*1.4+fm.b*.6;
+    IL=k.items.filter(i=>i.name).map(i=>{c.font=fo(600,is,FB);const nl=wrapT(c,i.name+((+i.qty||1)!==1?'  ×  '+i.qty:''),iw-fm.b*1.2-(o.prices?fm.b*6:0));c.font=fo(400,ds,FB);return{nl,dl:i.desc?wrapT(c,i.desc,iw-fm.b*1.2):[],i}});
+    IL.forEach(r=>h+=r.nl.length*is*1.35+r.dl.length*ds*1.4+fm.b*.4);
+    if(+k.discount>0)h+=is*1.6;H=h+pad*.5;return H},
+  draw(c,x,y,w){c.fillStyle='#FFFFFF';c.fillRect(x,y,w,H);c.strokeStyle=o.chosen?INK:LINE;c.lineWidth=o.chosen?6:2;c.strokeRect(x,y,w,H);
+    let yy=y+pad;c.font=fo(500,fm.s,FMO);sp(c,2.5);c.fillStyle=o.chosen?RED:MUT;c.fillText(o.tag,x+pad,yy+fm.s);sp(c,0);yy+=fm.s*1.6;
+    c.font=fo(700,fm.pr,FD);c.fillStyle=INK;c.textAlign='right';c.fillText(brl(pkgTotal(k)),x+w-pad,y+pad+fm.pr*.82);c.textAlign='left';
+    c.font=fo(700,ns,FD);c.fillText(k.name.toUpperCase(),x+pad,yy+ns*.84);yy+=ns*1.12;
+    c.font=fo(400,fm.b*.92,FB);c.fillStyle=MUT;lines(c,DL,x+pad,yy,fm.b*.92,fm.b*.92*1.4);yy+=DL.length*fm.b*.92*1.4+fm.b*.6;
+    IL.forEach(r=>{c.fillStyle=RED;c.fillRect(x+pad,yy+is*.45,fm.b*.38,fm.b*.38);c.font=fo(600,is,FB);c.fillStyle=INK;lines(c,r.nl,x+pad+fm.b*1.2,yy,is,is*1.35);
+      if(o.prices){c.textAlign='right';c.font=fo(500,is,FB);c.fillStyle=MUT;c.fillText(brl((+r.i.qty||0)*(+r.i.price||0)),x+w-pad,yy+is*.98);c.textAlign='left'}
+      yy+=r.nl.length*is*1.35;c.font=fo(400,ds,FB);c.fillStyle=MUT;lines(c,r.dl,x+pad+fm.b*1.2,yy,ds,ds*1.4);yy+=r.dl.length*ds*1.4+fm.b*.4});
+    if(+k.discount>0){c.font=fo(600,is,FB);c.fillStyle=RED;c.fillText('Desconto de '+brl(k.discount),x+pad+fm.b*1.2,yy+is)}}}};
+const addon=(a,on,fm)=>{let L,H;const lh=fm.s*1.45;return{after:0,
+  measure(c,w){c.font=fo(400,fm.s*1.05,FB);L=a.desc?wrapT(c,a.desc,w-fm.b*1.6):[];H=fm.b*.5+fm.b*1.4+L.length*lh+fm.b*.5;return H},
+  draw(c,x,y,w){const q=fm.b*.8,by=y+fm.b*.5+fm.b*.3;c.lineWidth=3;c.strokeStyle=INK;c.strokeRect(x+1.5,by,q,q);if(on){c.fillStyle=RED;c.fillRect(x+7,by+5.5,q-11,q-11)}
+    c.font=fo(600,fm.b,FB);c.fillStyle=INK;c.fillText(a.name,x+fm.b*1.6,y+fm.b*.5+fm.b*1.02);c.textAlign='right';c.font=fo(700,fm.b*1.25,FD);c.fillText('+ '+brl(a.price),x+w,y+fm.b*.5+fm.b*1.04);c.textAlign='left';
+    c.font=fo(400,fm.s*1.05,FB);c.fillStyle=MUT;lines(c,L,x+fm.b*1.6,y+fm.b*.5+fm.b*1.4,fm.s*1.05,lh);c.fillStyle=LINE;c.fillRect(x,y+H-2,w,2)}}};
+const totalB=(label,value,note,fm)=>{let L,NL,H;const pad=fm.b;return{pre:fm.b*.9,after:fm.b,
+  measure(c,w){c.font=fo(500,fm.s,FMO);L=wrapT(c,label.toUpperCase(),w-pad*2);c.font=fo(400,fm.b*.92,FB);NL=note?wrapT(c,note,w-pad*2):[];H=pad+L.length*fm.s*1.5+fm.pr*1.25+NL.length*fm.b*.92*1.4+pad;return H},
+  draw(c,x,y,w){c.fillStyle=INK;c.fillRect(x,y,w,H);let yy=y+pad;c.font=fo(500,fm.s,FMO);c.fillStyle=FAINT;lines(c,L,x+pad,yy,fm.s,fm.s*1.5);yy+=L.length*fm.s*1.5;
+    c.font=fo(700,fm.pr*1.2,FD);c.fillStyle=PAPER;c.fillText(value,x+pad,yy+fm.pr*1.02);yy+=fm.pr*1.25;c.font=fo(400,fm.b*.92,FB);c.fillStyle='#D5DAD6';lines(c,NL,x+pad,yy,fm.b*.92,fm.b*.92*1.4)}}};
+const stepB=(n,title,desc,fm)=>{let L;const lh=fm.b*1.38,ind=fm.h2*.95;return{after:fm.b*.7,
+  measure(c,w){c.font=fo(400,fm.b*.95,FB);L=wrapT(c,desc,w-ind);return fm.b*1.5+L.length*lh},
+  draw(c,x,y){c.font=fo(700,fm.h2,FD);c.fillStyle=RED;c.fillText(String(n),x,y+fm.h2*.78);c.font=fo(700,fm.b*1.05,FB);c.fillStyle=INK;c.fillText(title,x+ind,y+fm.b*1.05);
+    c.font=fo(400,fm.b*.95,FB);c.fillStyle=MUT;lines(c,L,x+ind,y+fm.b*1.5,fm.b*.95,lh)}}};
+function buildBlocks(P,x,fm){const B=[],t=P.terms||{},tot=totalOf(P,x.sel),many=P.packages.length>1;let n=0;
+  const H=l=>B.push(head(++n,l,fm)),body=s=>tx(s,{f:fo(400,fm.b,FB),fs:fm.b,lh:fm.b*1.48,after:fm.b*.8});
+  H('O projeto');if(P.intro)B.push(body(P.intro));(P.facts||[]).filter(f=>f[0]&&f[1]).forEach(f=>B.push(kv(f[0],f[1],fm)));
+  H(many?'Opções de investimento':'Investimento');
+  P.packages.forEach((k,i)=>B.push(pkg(k,{chosen:many&&i===x.sel.pkg,prices:P.showPrices,tag:!many?'O QUE ESTÁ INCLUSO':i===x.sel.pkg?(x.picked?'SUA ESCOLHA':'RECOMENDADO'):i===P.rec?'RECOMENDADO':'OPÇÃO'},fm)));
+  if((P.addons||[]).length){B.push(sub('Adicionais opcionais',fm));P.addons.forEach((a,i)=>B.push(addon(a,x.sel.addons.includes(i),fm)))}
+  const pct=+t.signalPct||0,nAd=x.sel.addons.length;
+  B.push(totalB((many?'Pacote '+P.packages[x.sel.pkg].name:'Total')+(nAd?' + '+nAd+(nAd>1?' adicionais':' adicional'):''),brl(tot),pct?'Sinal de '+pct+'% para reservar a data: '+brl(tot*pct/100)+'.':'',fm));
+  H('Combinados');
+  [['Pagamento',[pct?'Sinal de '+pct+'% na aprovação.':'',t.payment].filter(Boolean).join(' ')],
+   ['Ajustes',(+t.revisions||0)+' rodada'+(+t.revisions===1?'':'s')+' de ajustes inclusa'+(+t.revisions===1?'':'s')+'.'+(+t.extraRev?' Rodada extra: '+brl(t.extraRev)+'.':'')],
+   ['Entrega',t.delivery],['Hora extra',+t.extraHour?brl(t.extraHour)+' por hora além do combinado.':''],['Remarcação',t.cancel],
+   ['Validade','Valores garantidos até '+fdate(P.validUntil)+'. Depois disso, a data e os valores podem mudar.'],['Observações',t.notes]].filter(r=>r[1]).forEach(r=>B.push(kv(r[0],r[1],fm)));
+  const ni=String(P.notIncluded||'').split('\n').map(s=>s.trim()).filter(Boolean);
+  if(ni.length){B.push(sub('Fora deste orçamento',fm));ni.forEach(s=>B.push(bul(s,fm)))}
+  H('Próximos passos');
+  [['Aprove pelo WhatsApp','Na página do orçamento, toque em Aprovar. A mensagem já vai com o pacote escolhido.'],
+   pct?['Pague o sinal de '+pct+'%','A data só fica reservada depois do sinal.']:null,
+   ['Produção',P.type==='evento'?'Gravação no dia e horário combinados.':'Gravação ou envio do material, conforme o combinado.'],
+   ['Entrega e ajustes','Você recebe o vídeo e tem '+(+t.revisions||0)+' rodada'+(+t.revisions===1?'':'s')+' de ajustes.'],
+   ['Saldo na entrega final','Com tudo aprovado, você recebe os arquivos finais.']].filter(Boolean).forEach((s,i)=>B.push(stepB(i+1,s[0],s[1],fm)));
+  return B}
+function layout(c,blocks,fm){const colW=(fm.w-2*fm.m-(fm.cols-1)*fm.gap)/fm.cols,top=fm.top,bottom=fm.h-fm.bot;let pages=[[]],col=0,y=top;
+  blocks.forEach((b,i)=>{const h=b.measure(c,colW);let need=h+(y>top?b.pre||0:0);if(b.keep&&blocks[i+1])need+=(b.after??0)+blocks[i+1].measure(c,colW);
+    if(y>top&&(y+need>bottom||(b.keep&&b.pre>fm.b&&bottom-y<(bottom-top)*.3))){col++;if(col>=fm.cols){col=0;pages.push([])}y=top}
+    if(y>top)y+=b.pre||0;pages[pages.length-1].push({b,x:fm.m+col*(colW+fm.gap),y,w:colW});y+=h+(b.after??0)});
+  return pages}
+const mk=fm=>{const cv=document.createElement('canvas');cv.width=fm.w;cv.height=fm.h;const c=cv.getContext('2d');c.textBaseline='alphabetic';return[cv,c]};
+function cover(P,x,fm){const[cv,c]=mk(fm),W=fm.w,Hh=fm.h,m=fm.m;c.fillStyle=INK;c.fillRect(0,0,W,Hh);
+  const sh=fm.b*3,n=fm.cols===2?16:9,sw=W/n;c.fillStyle=PAPER;for(let i=0;i<=n+1;i+=2){c.beginPath();c.moveTo(i*sw,0);c.lineTo((i+1)*sw,0);c.lineTo((i+1)*sw-sh*.6,sh);c.lineTo(i*sw-sh*.6,sh);c.closePath();c.fill()}c.fillRect(0,sh,W,6);
+  let y=sh+fm.b*3.2;c.fillStyle=RED;c.beginPath();c.arc(m+fm.s*.5,y-fm.s*.36,fm.s*.5,0,7);c.fill();
+  c.font=fo(500,fm.s,FMO);sp(c,4);c.fillStyle=PAPER;c.fillText('ORÇAMENTO · '+(TYPES[P.type]||'').toUpperCase(),m+fm.s*1.7,y);sp(c,0);y+=fm.b*1.3;
+  let ts=fm.ti,L;const T=(P.title||'Seu projeto').toUpperCase(),max=fm.cols===2?3:5;do{c.font=fo(700,ts,FD);L=wrapT(c,T,W-2*m);ts-=10}while(L.length>max&&ts>70);ts+=10;
+  L.forEach((l,i)=>c.fillText(l,m,y+ts*.86+i*ts*.95));y+=L.length*ts*.95+fm.b*1.3;
+  c.font=fo(400,fm.b*1.15,FB);c.fillStyle='#C3C9CC';c.fillText('Proposta para '+x.client,m,y+fm.b);
+  const cells=[['Nº',P.num],['Data',fdate(P.created)],['Válido até',fdate(P.validUntil)],['Versão','v'+P.ver]],per=fm.cols===2?4:2,ch=fm.b*4.4,gy=Hh-m-fm.b*2.8-(cells.length/per)*ch,cw=(W-2*m)/per;
+  c.strokeStyle=PAPER;c.lineWidth=3;cells.forEach((ce,i)=>{const cx=m+(i%per)*cw,cy=gy+Math.floor(i/per)*ch;c.strokeRect(cx,cy,cw,ch);
+    c.font=fo(500,fm.s*.9,FMO);sp(c,3);c.fillStyle=FAINT;c.fillText(ce[0].toUpperCase(),cx+fm.b*.6,cy+fm.s*1.6);sp(c,0);c.font=fo(600,fm.b*1.9,FD);c.fillStyle=PAPER;c.fillText(String(ce[1]),cx+fm.b*.6,cy+ch-fm.b*.8)});
+  c.font=fo(700,fm.b*1.4,FD);sp(c,2);c.fillStyle=PAPER;c.fillText(String(x.studio.name||'').toUpperCase(),m,Hh-m);sp(c,0);
+  c.font=fo(400,fm.s,FMO);c.fillStyle=FAINT;c.textAlign='right';c.fillText([x.studio.tagline,x.studio.insta].filter(Boolean).join(' · '),W-m,Hh-m);c.textAlign='left';return cv}
+let fr;const fontsReady=()=>fr||(fr=Promise.race([Promise.all(['700 40px "Barlow Condensed"','600 40px "Barlow Condensed"','400 20px Figtree','500 20px Figtree','600 20px Figtree','700 20px Figtree','400 20px "IBM Plex Mono"','500 20px "IBM Plex Mono"'].map(f=>document.fonts.load(f,'Orçamento R$ 0123'))).catch(()=>{}),new Promise(r=>setTimeout(r,4000))]));
+async function renderSheets(P,x){await fontsReady();const fm=FM[x.orient],[,c0]=mk(fm),pages=layout(c0,buildBlocks(P,x,fm),fm),out=[cover(P,x,fm)],N=pages.length+1;
+  pages.forEach((pg,i)=>{const[cv,c]=mk(fm);c.fillStyle=PAPER;c.fillRect(0,0,fm.w,fm.h);
+    c.font=fo(500,fm.s,FMO);sp(c,2);c.fillStyle=MUT;c.fillText((String(x.studio.name||'')+' · ORÇAMENTO Nº '+P.num+' · V'+P.ver).toUpperCase(),fm.m,fm.m+fm.s);c.textAlign='right';c.fillText(String(x.client||'').toUpperCase(),fm.w-fm.m,fm.m+fm.s);c.textAlign='left';
+    c.fillStyle=LINE;c.fillRect(fm.m,fm.m+fm.s*1.9,fm.w-2*fm.m,2);const fy=fm.h-fm.bot+fm.s*.6;c.fillRect(fm.m,fy,fm.w-2*fm.m,2);
+    c.fillStyle=MUT;c.fillText('VÁLIDO ATÉ '+fdate(P.validUntil),fm.m,fy+fm.s*1.9);c.textAlign='right';c.fillText(String(i+2).padStart(2,'0')+' / '+String(N).padStart(2,'0'),fm.w-fm.m,fy+fm.s*1.9);c.textAlign='left';sp(c,0);
+    pg.forEach(q=>q.b.draw(c,q.x,q.y,q.w));out.push(cv)});
+  return out}
+/* PDF mínimo: uma imagem JPEG por página, sem biblioteca */
+async function pdfFrom(sheets){const parts=[],offs=[];let off=0;const push=x=>{const u=typeof x==='string'?te.encode(x):x;parts.push(u);off+=u.length};
+  const obj=(n,s,bin)=>{offs[n]=off;push(n+' 0 obj\n'+s);if(bin){push('stream\n');push(bin);push('\nendstream')}push('\nendobj\n')};
+  push('%PDF-1.4\n%\u00e2\u00e3\u00cf\u00d3\n');const N=sheets.length;
+  obj(1,'<< /Type /Catalog /Pages 2 0 R >>');obj(2,'<< /Type /Pages /Kids ['+sheets.map((_,i)=>(3+i*3)+' 0 R').join(' ')+'] /Count '+N+' >>');
+  for(let i=0;i<N;i++){const s=sheets[i],w=s.w/2,h=s.h/2,jpg=new Uint8Array(await s.blob.arrayBuffer()),cs=te.encode('q '+w+' 0 0 '+h+' 0 0 cm /Im0 Do Q');
+    obj(3+i*3,'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 '+w+' '+h+'] /Resources << /XObject << /Im0 '+(5+i*3)+' 0 R >> >> /Contents '+(4+i*3)+' 0 R >>');
+    obj(4+i*3,'<< /Length '+cs.length+' >>\n',cs);
+    obj(5+i*3,'<< /Type /XObject /Subtype /Image /Width '+s.w+' /Height '+s.h+' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length '+jpg.length+' >>\n',jpg)}
+  const xr=off,n=2+N*3;let x='xref\n0 '+(n+1)+'\n0000000000 65535 f \n';for(let i=1;i<=n;i++)x+=String(offs[i]).padStart(10,'0')+' 00000 n \n';
+  push(x+'trailer\n<< /Size '+(n+1)+' /Root 1 0 R >>\nstartxref\n'+xr+'\n%%EOF\n');return new Blob(parts,{type:'application/pdf'})}
+let PAINT=null,PJ=0,SHEETS=[];
+async function paint(){const job=++PJ,box=$('#pages');if(!box||!PAINT)return;box.innerHTML='<p class="meta">Montando as páginas…</p>';
+  const cvs=await renderSheets(PAINT.P,PAINT.x),blobs=await Promise.all(cvs.map(cv=>new Promise(r=>cv.toBlob(r,'image/jpeg',.9))));if(job!==PJ)return;
+  SHEETS.forEach(s=>URL.revokeObjectURL(s.url));SHEETS=blobs.map((b,i)=>({blob:b,url:URL.createObjectURL(b),w:cvs[i].width,h:cvs[i].height}));
+  const bx=$('#pages');if(!bx)return;bx.className='pages '+PAINT.x.orient;
+  bx.innerHTML=SHEETS.map((s,i)=>'<figure><img class="sheet" src="'+s.url+'" width="'+s.w+'" height="'+s.h+'" alt="Página '+(i+1)+' de '+SHEETS.length+' do orçamento"><figcaption><span>Página '+(i+1)+' de '+SHEETS.length+'</span><button type="button" class="lnk" data-a="savePage" data-i="'+i+'">Salvar imagem</button></figcaption></figure>').join('')}
+
+/* ---------- gravação e publicação ---------- */
+let saveT;
+function scheduleSave(){if(!A)return;A.dirty=true;clearTimeout(saveT);saveT=setTimeout(()=>saveLocal().catch(console.error),900);syncUi()}
+async function saveLocal(){clearTimeout(saveT);if(!A)return;
+  for(const c of A.vault.clients){if(c.pubRev!==c.rev||!S.pub[c.lid]){const k=await derive(norm(c.code),'c:'+S.salt,CITER);if(c.lid&&c.lid!==k.lid)delete S.pub[c.lid];c.lid=k.lid;S.pub[k.lid]=await seal(k.key,publicClient(c));c.pubRev=c.rev}}
+  const keep=new Set(A.vault.clients.map(c=>c.lid));Object.keys(S.pub).forEach(k=>{if(!keep.has(k))delete S.pub[k]});
+  S.vault=await seal(A.key,A.vault);S.rev++;ls.set('rs-local',S);localAhead=true;A.dirty=false;syncUi()}
+function buildDoc(state){const head=[...document.head.querySelectorAll('style')].map(s=>s.textContent).find(t=>/safe-area-inset/.test(t))||RESET;
+  return'<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>'+head+'</style></head><body>'+HEAD+'\n<style id="rs-css">'+$('#rs-css').textContent+'</style>\n<div id="app"></div>\n<script type="application/json" id="rs-data">'+JSON.stringify(state).replace(/</g,'\\u003c')+'<\/script>\n<script id="rs-app">'+$('#rs-app').textContent+'<\/script></body></html>'}
+const syncHtml=()=>!A?'':A.dirty?'<span>Salvando…</span>':WEB?'<span>Salvo neste aparelho. Os dados ficam só neste navegador: baixe uma cópia de segurança em Configurações de vez em quando.</span>':localAhead?'<span><b>Há alterações que os clientes ainda não veem.</b> '+(canPub&&ART?'Publique para liberar.':'Este acesso não consegue publicar: abra o site pelo claude.ai com a conta que tem permissão de edição.')+'</span><span class="row">'+(canPub&&ART?'<button type="button" class="btn sm" data-a="publish">Publicar agora</button>':'')+'<button type="button" class="lnk danger" data-a="discard">Descartar</button></span>':'<span>Tudo publicado. Os clientes veem a versão atual.</span>';
+function syncUi(){const el=$('#sync');if(el)el.innerHTML=syncHtml()}
+
+/* ---------- componentes ---------- */
+const bind=p=>'id="b-'+p+'" data-b="'+p+'"';
+const inp=(p,o={})=>'<input '+bind(p)+' type="'+(o.t||'text')+'" '+(o.t==='number'?'inputmode="decimal" step="any" ':'')+'placeholder="'+esc(o.p||'')+'" aria-label="'+esc(o.p||o.al||'')+'" value="'+esc(getp(p)??'')+'" '+(o.x||'')+'>';
+const area=(p,o={})=>'<textarea '+bind(p)+' rows="'+(o.r||3)+'" placeholder="'+esc(o.p||'')+'">'+esc(getp(p)??'')+'</textarea>';
+const lab=(l,ctl,h)=>'<label class="fld"><span>'+l+'</span>'+ctl+(h?'<small>'+h+'</small>':'')+'</label>';
+const sel=(p,opts,x)=>'<select '+bind(p)+' '+(x||'')+'>'+opts.map(o=>'<option value="'+esc(o[0])+'" '+(String(getp(p))===String(o[0])?'selected':'')+'>'+esc(o[1])+'</option>').join('')+'</select>';
+function fld(f,r){const p=r+'.'+f.k,v=getp(p),h=f.h?'<small>'+f.h+'</small>':'';
+  if(f.t==='choice'||f.t==='multi'){const m=f.t==='multi';return'<fieldset class="fld"><legend>'+f.l+'</legend>'+h+'<div class="opts">'+f.o.map(o=>'<label class="opt"><input type="'+(m?'checkbox':'radio')+'" name="'+p+'" data-b="'+p+'" '+(m?'data-multi="1" ':'')+(f.re?'data-re ':'')+'value="'+esc(o)+'" '+((m?(v||[]).includes(o):v===o)?'checked':'')+'><span>'+esc(f.lb?f.lb[o]:o)+'</span></label>').join('')+'</div></fieldset>'}
+  if(f.t==='area')return lab(f.l,area(p,{p:f.p}),f.h);
+  return lab(f.l,inp(p,{t:f.t==='num'?'number':f.t,p:f.p}),f.h)}
+function toast(m){const t=$('#toast');if(!t)return;t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3200)}
+function copy(text,ok){const fail=()=>{X.copy=text;render();const t=$('#copybox');if(t){t.focus();t.select()}};try{navigator.clipboard.writeText(text).then(()=>toast(ok||'Copiado.'),fail)}catch(e){fail()}}
+const slateForm=()=>'<form class="slate" data-f="openCode"><div class="clap" aria-hidden="true"></div><div class="slate-b"><label for="b-x.code">Já tem um código?</label>'+
+  '<input '+bind('x.code')+' autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX" value="'+esc(X.code)+'">'+
+  '<button class="btn" '+(X.busy?'disabled':'')+'>'+(X.busy?'Abrindo…':'Abrir meu orçamento')+'</button>'+(X.err?'<p class="err" role="alert">'+esc(X.err)+'</p>':'')+
+  '<p class="meta">O código vem na mensagem do orçamento. Não precisa de cadastro.</p></div></form>';
+
+/* ---------- telas públicas ---------- */
+function shell(inner){const st=pub();return'<header class="top"><div class="wrap bar"><a href="#inicio" class="brand"><i class="rec"></i>'+esc(st.name)+'<small>'+esc(st.tagline||'')+'</small></a><nav>'+
+  (V.name==='estudio'?'<a href="#inicio">Ver o site</a>':'<a href="#briefing">Pedir orçamento</a><a href="#orcamento">Meu orçamento</a>')+'</nav></div></header><main class="wrap">'+inner+
+  (X.copy?'<div class="card"><p><b>Selecione e copie o texto:</b></p><textarea id="copybox" readonly rows="7">'+esc(X.copy)+'</textarea><div><button type="button" class="btn sm ghost" data-a="closeCopy">Fechar</button></div></div>':'')+
+  '</main><footer class="wrap foot"><span>'+esc([st.name,st.city,st.insta].filter(Boolean).join(' · '))+'</span><a href="#estudio">Área do profissional</a></footer><div id="toast" role="status" aria-live="polite"></div>'}
+function vHome(){return'<section class="hero"><div class="hero-t"><p class="eyebrow">Orçamento de vídeo</p><h1>Seu orçamento de vídeo, sem vai e vem.</h1>'+
+  '<p class="lead">Responda algumas perguntas rápidas e receba uma proposta clara, para abrir no celular ou no computador e baixar quando quiser.</p>'+
+  '<div class="row"><a class="btn" href="#briefing">Pedir orçamento</a><button type="button" class="btn ghost" data-a="demo">Ver um exemplo</button></div></div>'+slateForm()+'</section>'+
+  '<section><h2>Como funciona</h2><ol class="steps"><li><b>Você conta o que precisa</b><span>Perguntas diretas sobre data, local, duração e formato. Leva uns dois minutos.</span></li>'+
+  '<li><b>'+esc(pub().name)+' monta a proposta</b><span>Com pacotes, o que está incluso, prazo e condições, tudo por escrito.</span></li>'+
+  '<li><b>Você abre com seu código</b><span>Escolhe o pacote, baixa em PDF na vertical ou na horizontal e aprova pelo WhatsApp.</span></li></ol></section>'}
+function vBrief(){const d=D,st=V.step||0,names=['Sobre você','O projeto','Referências','Enviar'];let body='';
+  if(st===0)body=lab('Seu nome',inp('d.nome',{p:'Como podemos te chamar?',x:'autocomplete="name"'}))+lab('Empresa ou @ do Instagram',inp('d.empresa',{p:'Opcional'}))+fld({k:'t',l:'Que tipo de vídeo você precisa?',t:'choice',o:Object.keys(TYPES),lb:TYPES},'d');
+  if(st===1)body=active(d,Q[d.t]||[]).map(f=>fld(f,'d')).join('');
+  if(st===2)body=COMMON.map(f=>fld(f,'d')).join('');
+  if(st===3){const msg=briefMsg(d);body='<dl class="kv card"><dt>Nome</dt><dd>'+esc(d.nome)+'</dd><dt>Tipo</dt><dd>'+esc(TYPES[d.t])+'</dd>'+allFacts(d).map(f=>'<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>').join('')+'</dl>'+
+    '<p class="note">O botão abre o WhatsApp com as respostas já escritas'+(pub().whats?'':'. Escolha o contato de '+esc(pub().name))+'. É só tocar em enviar. Não apague o código no fim da mensagem: ele monta o orçamento automaticamente.</p>'+
+    '<div class="row"><a class="btn" target="_blank" rel="noopener" href="'+esc(wa(msg))+'">Enviar pelo WhatsApp</a><button type="button" class="btn ghost" data-a="copyBrief">Copiar respostas</button></div>'}
+  return'<section class="narrow"><div><p class="eyebrow">Etapa '+(st+1)+' de 4 · '+names[st]+'</p><h1>'+(st===3?'Confira e envie':'Pedir orçamento')+'</h1></div>'+(X.err?'<p class="err" role="alert">'+esc(X.err)+'</p>':'')+
+    '<form data-f="briefNext" class="stack">'+body+'<div class="row">'+(st>0?'<button type="button" class="btn ghost" data-a="briefBack">Voltar</button>':'')+(st<3?'<button class="btn">Continuar</button>':'<button type="button" class="lnk danger" data-a="briefReset">Começar de novo</button>')+'</div></form></section>'}
+function vClient(){PAINT=null;
+  if(!C)return'<section class="narrow"><div><p class="eyebrow">Meu orçamento</p><h1>Digite seu código</h1></div><p class="lead">É o código que veio na mensagem do orçamento.</p>'+slateForm()+'</section>';
+  const ps=C.data.props;if(!ps.length)return'<section class="narrow"><h1>Olá, '+esc(C.data.name)+'</h1><p class="lead">Seu orçamento ainda está sendo preparado. Assim que ficar pronto, ele aparece aqui com este mesmo código.</p><div><button type="button" class="lnk" data-a="leave">Usar outro código</button></div></section>';
+  const P=ps.find(p=>p.id===V.pid)||ps[ps.length-1];V.pid=P.id;const s=getSel(P),tot=totalOf(P,s),o=V.orient||P.orient||(innerWidth<760?'v':'h'),many=P.packages.length>1;
+  PAINT={P,x:{orient:o,client:C.data.name,sel:s,studio:pub(),picked:!!SELMEM[P.id]||!!(ls.get('rs-sel')||{})[P.id]}};
+  const ads=s.addons.map(i=>P.addons[i].name),say=(a)=>a+' o orçamento Nº '+P.num+' (v'+P.ver+') · '+P.title+'.\n'+(many?'Pacote: '+P.packages[s.pkg].name+'\n':'')+(ads.length?'Adicionais: '+ads.join(', ')+'\n':'')+'Total: '+brl(tot)+'\nCódigo: '+C.code;
+  return(C.demo?'<p class="note"><b>Exemplo com dados fictícios.</b> É assim que o cliente vê o orçamento. Os valores são ilustrativos.</p>':'')+
+  '<section class="phead"><p class="eyebrow">Olá, '+esc(C.data.name)+'</p><h1>'+esc(P.title)+'</h1><p class="meta"><span class="chip st-'+P.status+'">'+(P.status==='enviado'?'Aguardando sua resposta':STATUS[P.status])+'</span> Nº '+esc(P.num)+' · versão '+P.ver+' · '+validTxt(P)+'</p>'+
+  (ps.length>1?'<div class="row">'+ps.map(p=>'<button type="button" class="btn sm '+(p.id===P.id?'':'ghost')+'" data-a="pickProp" data-i="'+p.id+'">'+esc(p.title)+'</button>').join('')+'</div>':'')+'</section>'+
+  '<section class="grid2"><div class="card"><h2>'+(many?'Escolha o pacote':'Seu orçamento')+'</h2>'+
+   (many?P.packages.map((k,i)=>'<label class="pk '+(i===s.pkg?'on':'')+'"><input type="radio" name="pk" data-ch="selPkg" value="'+i+'" '+(i===s.pkg?'checked':'')+'><span><strong>'+esc(k.name)+'</strong> '+(i===P.rec?'<em>Recomendado</em>':'')+'</span><b>'+brl(pkgTotal(k))+'</b><small>'+esc(k.desc||'')+'</small></label>').join(''):'')+
+   ((P.addons||[]).length?'<h3>Adicionais</h3>'+P.addons.map((a,i)=>'<label class="pk '+(s.addons.includes(i)?'on':'')+'"><input type="checkbox" data-ch="selAdd" value="'+i+'" '+(s.addons.includes(i)?'checked':'')+'><span><strong>'+esc(a.name)+'</strong></span><b>+ '+brl(a.price)+'</b><small>'+esc(a.desc||'')+'</small></label>').join(''):'')+
+   '<div class="sum"><span>Total</span><b>'+brl(tot)+'</b></div>'+((+P.terms.signalPct)?'<p class="meta">Sinal de '+P.terms.signalPct+'% para reservar a data: '+brl(tot*P.terms.signalPct/100)+'</p>':'')+
+   (P.status==='aprovado'?'<p class="note">Orçamento aprovado. Qualquer dúvida, chame no WhatsApp.</p>':'<a class="btn" target="_blank" rel="noopener" href="'+esc(wa(say('Olá! Quero aprovar')))+'">Aprovar pelo WhatsApp</a>')+
+   '<a class="btn ghost" target="_blank" rel="noopener" href="'+esc(wa(say('Olá! Tenho uma dúvida ou quero ajustar')))+'">Tirar dúvida ou pedir ajuste</a>'+
+   '<p class="meta">Pode encaminhar este link e o código para quem decide junto com você.</p><div><button type="button" class="lnk danger" data-a="leave">Sair deste código</button></div></div>'+
+  '<div class="stack"><div class="row" style="justify-content:space-between"><div class="seg" role="group" aria-label="Formato da proposta"><button type="button" data-a="orient" data-i="v" aria-pressed="'+(o==='v')+'">Vertical · celular</button><button type="button" data-a="orient" data-i="h" aria-pressed="'+(o==='h')+'">Horizontal · computador</button></div>'+
+   '<button type="button" class="btn sm" data-a="pdf">Baixar PDF</button></div><div id="pages" class="pages"></div></div></section>'}
+
+/* ---------- área do profissional ---------- */
+const cur=()=>{const c=A.vault.clients.find(c=>c.id===V.adm.cid);return{c,P:c&&c.proposals.find(p=>p.id===V.adm.pid)}};
+const cliMsg=(c,P,link)=>'Oi, '+(c.name||'tudo bem')+'! Seu orçamento'+(P?' de '+P.title:'')+' está pronto.\n\nCódigo: '+c.code+'\n\nDá para ver no celular ou no computador, escolher o pacote e baixar em PDF.'+(P?' Os valores valem até '+fdate(P.validUntil)+'.':'')+'\n\nAbra aqui e digite o código:\n'+link;
+const followMsg=(c,P,link)=>'Oi, '+(c.name||'tudo bem')+'! Passando para lembrar do orçamento de '+P.title+'. Os valores valem até '+fdate(P.validUntil)+'. Se quiser ajustar alguma coisa para caber melhor, me fala.\n\nCódigo: '+c.code+'\n'+link;
+const noSent=c=>WEB&&!c.proposals.some(p=>p.status!=='rascunho')&&(toast('Mude a situação do orçamento para "Aguardando resposta" antes de enviar.'),true);
+function vAdmin(){PAINT=null;
+  if(!crypto.subtle)return'<section class="narrow"><h1>Área do profissional</h1><p class="note">Este navegador não libera a criptografia necessária. Abra em um navegador atualizado.</p></section>';
+  if(!A){const setup=!S.vault;return'<section class="narrow"><div><p class="eyebrow">Área restrita</p><h1>'+(setup?'Criar acesso':'Área do profissional')+'</h1></div>'+
+    (setup?'<p class="lead">Crie a senha que protege a tabela de preços, os clientes e os orçamentos.</p>':'')+(X.err?'<p class="err" role="alert">'+esc(X.err)+'</p>':'')+
+    '<form data-f="admLogin" class="stack">'+lab('Senha',inp('x.pw',{t:'password',x:'autocomplete="'+(setup?'new':'current')+'-password"'}))+(setup?lab('Repita a senha',inp('x.pw2',{t:'password',x:'autocomplete="new-password"'}),'Mínimo de 8 caracteres. Guarde bem: sem ela não dá para abrir os dados e ninguém consegue recuperá-la.'):'')+
+    '<div><button class="btn" '+(X.busy?'disabled':'')+'>'+(X.busy?'Abrindo…':setup?'Criar acesso':'Entrar')+'</button></div></form></section>'}
+  const a=V.adm,{c,P}=cur(),tab=(k,l)=>'<button type="button" data-a="tab" data-i="'+k+'" aria-current="'+(a.tab===k)+'">'+l+'</button>';
+  let inner=a.tab==='precos'?vPrices():a.tab==='config'?vCfg():c&&P?(a.prev?vPrev(c,P):vProp(c,P)):c?vCli(c):vPainel();
+  return'<div class="tabs">'+tab('painel','Clientes e orçamentos')+tab('precos','Tabela de preços')+tab('config','Configurações')+'<button type="button" data-a="logout">Sair</button></div><div class="sync" id="sync">'+syncHtml()+'</div>'+inner}
+function vPainel(){const v=A.vault;return'<section class="stack"><div class="row" style="justify-content:space-between"><h2>Clientes</h2><button type="button" class="btn sm" data-a="newClient">Novo cliente</button></div>'+
+  (v.clients.length?v.clients.map(c=>'<div class="card"><div class="row" style="justify-content:space-between"><div><b>'+esc(c.name||'Sem nome')+'</b> <span class="meta">'+esc(c.code)+'</span></div><button type="button" class="btn sm ghost" data-a="openCli" data-i="'+c.id+'">Abrir</button></div>'+
+    c.proposals.map(p=>'<div class="lrow"><div><a href="#" data-a="openProp" data-c="'+c.id+'" data-i="'+p.id+'">'+esc(p.title)+'</a> <span class="chip st-'+p.status+'">'+STATUS[p.status]+'</span><div class="meta">Nº '+p.num+' · v'+p.ver+' · '+brl(pkgTotal(p.packages[Math.min(p.rec,p.packages.length-1)]))+' · '+validTxt(p)+'</div></div>'+
+      (p.status==='enviado'?'<button type="button" class="lnk" data-a="follow" data-c="'+c.id+'" data-i="'+p.id+'">Copiar lembrete</button>':'')+'</div>').join('')+'</div>').join(''):
+   '<p class="note">Nenhum cliente ainda. Crie um cliente ou cole abaixo a mensagem de um pedido recebido pelo site.</p>')+
+  '<div class="card"><h2>Importar pedido</h2><p>Cole a mensagem que o cliente enviou pelo WhatsApp. O orçamento nasce preenchido com as respostas.</p>'+area('x.imp',{p:'Cole aqui a mensagem com o código BRF1…',r:4})+'<div class="row"><button type="button" class="btn sm" data-a="importBrief">Importar</button><button type="button" class="lnk" data-a="copyInvite">Copiar convite para o cliente responder</button></div></div></section>'}
+function vCli(c){R.c=c;return'<p><a href="#" data-a="admBack">← Todos os clientes</a></p><section class="card"><h2>Cliente</h2><div class="g3">'+lab('Nome',inp('c.name'))+lab('Contato',inp('c.contact',{p:'WhatsApp, empresa'}))+'</div>'+
+  '<div class="row"><span class="code">'+esc(c.code)+'</span><button type="button" class="btn sm ghost" data-a="copyCode">Copiar código</button><button type="button" class="btn sm" data-a="copyCliMsg">Copiar mensagem com link e código</button></div>'+
+  '<p class="meta">'+(WEB?'A mensagem leva um link com o orçamento cifrado: o cliente abre e digita este código. Mudou o orçamento? Copie e envie a mensagem de novo. Rascunhos não entram no link.':'O cliente abre o site, digita este código e vê só os orçamentos dele. Rascunhos não aparecem.')+'</p></section>'+
+  (c.brief?'<section class="card"><h2>Pedido recebido</h2><dl class="kv">'+allFacts(c.brief).map(f=>'<dt>'+esc(f[0])+'</dt><dd>'+esc(f[1])+'</dd>').join('')+'</dl></section>':'')+
+  '<section class="card"><h2>Orçamentos</h2>'+c.proposals.map(p=>'<div class="lrow"><div><a href="#" data-a="openProp" data-c="'+c.id+'" data-i="'+p.id+'">'+esc(p.title)+'</a> <span class="chip st-'+p.status+'">'+STATUS[p.status]+'</span><div class="meta">Nº '+p.num+' · v'+p.ver+' · '+validTxt(p)+'</div></div></div>').join('')+
+  '<div class="row">'+sel('x.ptype',Object.entries(TYPES),'style="width:auto"')+'<button type="button" class="btn sm" data-a="newProp">Novo orçamento</button></div></section>'+
+  '<p><button type="button" class="lnk danger" data-a="delCli" data-i="'+(X.del===c.id?'go':'ask')+'">'+(X.del===c.id?'Confirmar: excluir cliente e orçamentos':'Excluir cliente')+'</button></p>'}
+function vProp(c,P){R.c=c;R.p=P;const b='p.packages.';return'<p><a href="#" data-a="admBack">← '+esc(c.name||'Cliente')+'</a></p>'+
+  '<section class="card">'+lab('Título do projeto',inp('p.title'))+'<div class="g3">'+lab('Tipo',sel('p.type',Object.entries(TYPES)))+lab('Situação',sel('p.status',Object.entries(STATUS),'data-re'))+lab('Válido até',inp('p.validUntil',{t:'date'}))+lab('Formato preferido',sel('p.orient',[['','Automático'],['v','Vertical'],['h','Horizontal']]))+'</div>'+
+   '<p class="meta">Nº '+P.num+' · versão '+P.ver+' · <button type="button" class="lnk" data-a="newVer">Marcar como nova versão</button></p>'+
+   (P.status==='rascunho'?'<p class="note">Rascunho: o cliente ainda não vê. Mude a situação para "Aguardando resposta" e '+(WEB?'copie a mensagem com o link':'publique')+' para liberar.</p>':'')+
+   '<div class="row"><button type="button" class="btn sm" data-a="preview">Ver como o cliente</button><button type="button" class="btn sm ghost" data-a="copyCliMsg">Copiar mensagem com link e código</button></div></section>'+
+  '<section class="card"><h2>O projeto</h2>'+lab('Resumo em uma ou duas frases',area('p.intro',{p:'O que o vídeo precisa resolver para o cliente.'}))+'<h3>Informações que definem o preço</h3>'+
+   P.facts.map((f,i)=>'<div class="frow">'+inp('p.facts.'+i+'.0',{p:'Item'})+inp('p.facts.'+i+'.1',{p:'Valor'})+'<button type="button" class="x" data-a="rm" data-p="p.facts" data-i="'+i+'" aria-label="Remover">×</button></div>').join('')+
+   '<div><button type="button" class="btn sm ghost" data-a="addFact">Adicionar informação</button></div></section>'+
+  '<section class="card"><h2>Pacotes</h2><p class="meta">Dois ou três pacotes dão escolha ao cliente no lugar de um "sim ou não". O custo é só seu: o cliente nunca vê.</p>'+
+   P.packages.map((k,i)=>'<div class="pkg-ed"><div class="g3">'+lab('Nome',inp(b+i+'.name'))+lab('Desconto (R$)',inp(b+i+'.discount',{t:'number'}))+'<label class="chk"><input type="radio" name="rec" data-ch="setRec" value="'+i+'" '+(P.rec===i?'checked':'')+'> Recomendado</label></div>'+lab('Para quem é este pacote',inp(b+i+'.desc'))+
+    '<div><div class="ihead"><span>Item</span><span>Qtd</span><span>Preço</span><span>Custo</span><span></span></div>'+k.items.map((it,j)=>{const q=b+i+'.items.'+j;return'<div class="irow">'+inp(q+'.name',{p:'Nome do item'})+inp(q+'.qty',{t:'number',p:'Qtd'})+inp(q+'.price',{t:'number',p:'Preço'})+inp(q+'.cost',{t:'number',p:'Custo'})+'<button type="button" class="x" data-a="rm" data-p="'+b+i+'.items" data-i="'+j+'" aria-label="Remover item">×</button>'+inp(q+'.desc',{p:'Descrição que o cliente lê',x:'class="idesc"'})+'</div>'}).join('')+'</div>'+
+    '<div class="row"><select data-ch="addItem" data-i="'+i+'" aria-label="Adicionar item da tabela" style="width:auto;max-width:100%"><option value="">Adicionar da tabela de preços…</option>'+A.vault.prices.map(p=>'<option value="'+p.id+'">'+esc(p.cat+' · '+p.name+' · '+brl(p.price))+'</option>').join('')+'</select><button type="button" class="btn sm ghost" data-a="addBlank" data-i="'+i+'">Item em branco</button></div>'+
+    '<p class="tot">Total <b data-calc="pk.'+i+'"></b><small data-calc="pc.'+i+'"></small></p><div class="row"><button type="button" class="lnk" data-a="dupPkg" data-i="'+i+'">Duplicar pacote</button>'+(P.packages.length>1?'<button type="button" class="lnk danger" data-a="rmPkg" data-i="'+i+'">Remover pacote</button>':'')+'</div></div>').join('')+
+   '<label class="chk"><input type="checkbox" '+bind('p.showPrices')+' '+(P.showPrices?'checked':'')+'> Mostrar o valor de cada item para o cliente</label></section>'+
+  '<section class="card"><h2>Adicionais opcionais</h2><p class="meta">O cliente marca o que quiser e vê o total mudar na hora.</p>'+P.addons.map((a,i)=>'<div class="frow">'+inp('p.addons.'+i+'.name',{p:'Nome'})+inp('p.addons.'+i+'.desc',{p:'Descrição'})+'<button type="button" class="x" data-a="rm" data-p="p.addons" data-i="'+i+'" aria-label="Remover">×</button>'+inp('p.addons.'+i+'.price',{t:'number',p:'Preço'})+'</div>').join('')+
+   '<div><button type="button" class="btn sm ghost" data-a="addAddon">Adicionar opcional</button></div></section>'+
+  '<section class="card"><h2>Combinados</h2><div class="g3">'+lab('Sinal (%)',inp('p.terms.signalPct',{t:'number'}))+lab('Rodadas de ajuste inclusas',inp('p.terms.revisions',{t:'number'}))+lab('Rodada extra (R$)',inp('p.terms.extraRev',{t:'number'}))+lab('Hora extra (R$)',inp('p.terms.extraHour',{t:'number'}))+'</div>'+
+   lab('Pagamento',area('p.terms.payment',{r:2}))+lab('Prazo de entrega',area('p.terms.delivery',{r:2}))+lab('Remarcação e cancelamento',area('p.terms.cancel',{r:2}))+lab('Fora deste orçamento, um item por linha',area('p.notIncluded',{r:3}),'Deixar por escrito o que não entra evita o "achei que estava incluso".')+lab('Observações',area('p.terms.notes',{r:2}))+'</section>'+
+  '<p><button type="button" class="lnk danger" data-a="delProp" data-i="'+(X.del===P.id?'go':'ask')+'">'+(X.del===P.id?'Confirmar: excluir este orçamento':'Excluir orçamento')+'</button></p>'}
+function vPrev(c,P){const o=V.adm.po;PAINT={P,x:{orient:o,client:c.name||'Cliente',sel:{pkg:Math.min(P.rec,P.packages.length-1),addons:[]},studio:S.studio,picked:false}};
+  return'<p><a href="#" data-a="preview">← Voltar a editar</a></p><div class="row" style="justify-content:space-between"><div class="seg" role="group" aria-label="Formato"><button type="button" data-a="po" data-i="v" aria-pressed="'+(o==='v')+'">Vertical</button><button type="button" data-a="po" data-i="h" aria-pressed="'+(o==='h')+'">Horizontal</button></div><button type="button" class="btn sm" data-a="pdf">Baixar PDF</button></div><div id="pages" class="pages"></div>'}
+function vPrices(){return'<section class="card"><h2>Tabela de preços</h2><p class="note">Os valores iniciais são exemplos. Troque pelos seus: os orçamentos novos já nascem com eles. O custo serve para você ver a margem e nunca aparece para o cliente.</p>'+
+  A.vault.prices.map((p,i)=>{const q='v.prices.'+i;return'<div class="prow">'+inp(q+'.cat',{p:'Categoria'})+inp(q+'.name',{p:'Nome'})+inp(q+'.unit',{p:'Unidade'})+inp(q+'.price',{t:'number',p:'Preço'})+inp(q+'.cost',{t:'number',p:'Custo'})+'<button type="button" class="x" data-a="rm" data-p="v.prices" data-i="'+i+'" aria-label="Remover">×</button>'+inp(q+'.desc',{p:'Descrição que o cliente lê',x:'class="idesc"'})+'</div>'}).join('')+
+  '<div><button type="button" class="btn sm ghost" data-a="addPrice">Adicionar item</button></div></section>'}
+function vCfg(){return'<section class="card"><h2>Dados que aparecem no site</h2><div class="g3">'+lab('Nome',inp('s.name'))+lab('Descrição curta',inp('s.tagline'))+lab('Cidade',inp('s.city'))+lab('WhatsApp com DDI e DDD',inp('s.whats',{p:'5592999999999'}),'É para onde vão os pedidos e as aprovações.')+lab('Instagram',inp('s.insta',{p:'@usuario'}))+(WEB?'':lab('Link deste site',inp('s.link',{p:'https://claude.ai/…'}),'Entra nas mensagens prontas para o cliente.'))+'</div></section>'+
+  '<section class="card"><h2>Padrões dos novos orçamentos</h2><div class="g3">'+lab('Validade (dias)',inp('v.terms.validDays',{t:'number'}))+lab('Sinal (%)',inp('v.terms.signalPct',{t:'number'}))+lab('Rodadas de ajuste',inp('v.terms.revisions',{t:'number'}))+lab('Rodada extra (R$)',inp('v.terms.extraRev',{t:'number'}))+lab('Hora extra (R$)',inp('v.terms.extraHour',{t:'number'}))+'</div>'+
+   lab('Pagamento',area('v.terms.payment',{r:2}))+lab('Prazo de entrega',area('v.terms.delivery',{r:2}))+lab('Remarcação e cancelamento',area('v.terms.cancel',{r:2}))+lab('Fora do orçamento, um item por linha',area('v.terms.notIncluded',{r:3}))+'</section>'+
+  '<section class="card"><h2>Segurança e cópia</h2><div class="g3">'+lab('Nova senha',inp('x.np',{t:'password',x:'autocomplete="new-password"'}))+'<div><button type="button" class="btn sm ghost" data-a="chPw">Trocar senha</button></div></div>'+
+   '<div class="row"><button type="button" class="btn sm ghost" data-a="backup">Baixar cópia de segurança</button><label class="lnk">Restaurar de um arquivo<input type="file" accept=".json,application/json" data-ch="restore" hidden></label></div><p class="meta">A cópia vai cifrada com a sua senha. Faça uma depois de cada leva de orçamentos.</p></section>'}
+
+/* ---------- ações ---------- */
+function calcAll(){const P=R.p;document.querySelectorAll('[data-calc]').forEach(el=>{const[k,i]=el.dataset.calc.split('.'),pk=P&&P.packages[+i];if(!pk)return;const t=pkgTotal(pk),c=pkgCost(pk);
+  el.textContent=k==='pk'?brl(t):c?'Custo '+brl(c)+' · margem '+brl(t-c)+' ('+(t?Math.round((t-c)/t*100):0)+'%)':'Preencha o custo dos itens para ver sua margem'})}
+function touched(p){const r=p[0];if(r==='d')ls.set('rs-draft',D);if(r==='p'||r==='c'){if(R.c)R.c.rev=(R.c.rev||0)+1;scheduleSave()}if(r==='v'||r==='s')scheduleSave()}
+function render(){const act=document.activeElement&&document.activeElement.id;R.d=D;R.x=X;R.s=S.studio;R.v=A&&A.vault;R.p=null;R.c=null;
+  const v=V.name==='briefing'?vBrief():V.name==='orcamento'?vClient():V.name==='estudio'?vAdmin():vHome();
+  $('#app').innerHTML=shell(v);calcAll();if(act){const el=document.getElementById(act);if(el)el.focus()}paint().catch(console.error)}
+function go(n){V.name=n;X.err='';try{if(location.hash.slice(1)!==n&&!(n==='orcamento'&&location.hash.startsWith('#o=')))location.hash=n}catch(e){}render();try{scrollTo(0,0)}catch(e){}
+  if(n==='orcamento'&&!C){const sv=ls.get('rs-code');if(sv)openCode(sv,true).catch(()=>{})}}
+async function openCode(code,quiet){code=norm(code);if(!code){X.err='Digite o código que você recebeu.';return render()}
+  if(code==='DEMO'){C={code:'DEMO',data:demo(),demo:true}}
+  else{if(!crypto.subtle){X.err='Este navegador não consegue abrir o orçamento. Tente em um navegador atualizado.';return render()}
+    X.busy=true;if(!quiet)render();let data=null;const L=LINK||ls.get('rs-link');
+    if(L){try{const q=String(L).split('.'),k=await derive(code,'c:'+q[1],CITER),o=await unpack(+q[0],new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv:unb64(q[2])},k.key,unb64(q[3]))));data=o.c;OV=pickSt(o.s);ss.set('rs-st',OV)}catch(e){}}
+    if(!data&&S.salt){const k=await derive(code,'c:'+S.salt,CITER),box=S.pub[k.lid];if(box)data=await unseal(k.key,box)}
+    X.busy=false;
+    if(!data){if(quiet){ls.del('rs-code');return}X.err='Não encontramos um orçamento para esse código. Confira se digitou igual ao da mensagem.';return render()}
+    C={code:code.slice(0,4)+'-'+code.slice(4),data};ls.set('rs-code',code)}
+  X.err='';X.code='';V.pid=null;V.orient=null;go('orcamento')}
+const ACT={
+  openCode:()=>openCode(X.code),demo:()=>openCode('DEMO'),
+  leave(){C=null;ls.del('rs-code');render()},
+  pickProp(d){V.pid=d.i;render()},orient(d){V.orient=d.i;render()},po(d){V.adm.po=d.i;render()},
+  closeCopy(){X.copy=null;render()},
+  briefNext(){const d=D,st=V.step||0;X.err='';if(st===0&&(!String(d.nome||'').trim()||!d.t)){X.err='Preencha seu nome e escolha o tipo de vídeo.';return render()}V.step=Math.min(3,st+1);render();try{scrollTo(0,0)}catch(e){}},
+  briefBack(){V.step=Math.max(0,(V.step||0)-1);X.err='';render()},
+  briefReset(){D={t:''};ls.del('rs-draft');V.step=0;render()},
+  copyBrief(){copy(briefMsg(D),'Respostas copiadas. Cole no WhatsApp.')},
+  async savePage(d){const s=SHEETS[+d.i];if(!s)return;if(!DL&&!WEB)return toast('Segure o dedo sobre a página (ou clique com o botão direito) e escolha salvar a imagem.');
+    try{await saveFile('orcamento-'+PAINT.P.num+'-pagina-'+(+d.i+1)+'.jpg',s.blob)}catch(e){if(e&&e.code!=='declined')toast('Não deu para salvar aqui. Segure o dedo sobre a página e salve a imagem.')}},
+  async pdf(){if(!SHEETS.length)return;if(!DL&&!WEB)return toast('O download direto não está disponível nesta tela. Segure o dedo sobre cada página e salve a imagem.');
+    const blob=await pdfFrom(SHEETS);try{await saveFile('orcamento-'+PAINT.P.num+'-'+(PAINT.x.orient==='v'?'vertical':'horizontal')+'.pdf',blob)}catch(e){if(e&&e.code!=='declined')toast('Não deu para baixar aqui. Segure o dedo sobre cada página e salve a imagem.')}},
+  async admLogin(){X.err='';const setup=!S.vault;if(setup){if(String(X.pw).length<8){X.err='A senha precisa de pelo menos 8 caracteres.';return render()}if(X.pw!==X.pw2){X.err='As duas senhas estão diferentes.';return render()}}
+    X.busy=true;render();try{if(setup){S.salt=b64(crypto.getRandomValues(new Uint8Array(16)));const k=await derive(X.pw,'a:'+S.salt,AITER);A={key:k.key,raw:k.raw,vault:defaultVault()};await saveLocal()}
+      else{const k=await derive(X.pw,'a:'+S.salt,AITER);A={key:k.key,raw:k.raw,vault:await unseal(k.key,S.vault)}}ss.set('rs-ak',A.raw)}catch(e){A=null;X.err='Senha incorreta.'}
+    X.busy=false;X.pw=X.pw2='';render()},
+  logout(){A=null;ss.del('rs-ak');ss.del('rs-v');render()},
+  tab(d){V.adm={...V.adm,tab:d.i,cid:null,pid:null,prev:false};render()},
+  admBack(){const a=V.adm;if(a.pid)a.pid=null;else a.cid=null;a.prev=false;X.del=null;render()},
+  newClient(){const c={id:uid(),name:'',contact:'',code:newCode(),rev:1,proposals:[]};A.vault.clients.unshift(c);V.adm.cid=c.id;V.adm.pid=null;scheduleSave();render()},
+  openCli(d){V.adm.cid=d.i;V.adm.pid=null;render()},
+  openProp(d){V.adm.cid=d.c;V.adm.pid=d.i;V.adm.prev=false;render();try{scrollTo(0,0)}catch(e){}},
+  newProp(){const{c}=cur(),P=newProp(X.ptype,c.brief||{},A.vault);c.proposals.push(P);c.rev++;V.adm.pid=P.id;scheduleSave();render()},
+  importBrief(){const m=String(X.imp).match(/BRF1\.([A-Za-z0-9_-]+)/);if(!m)return toast('Não achei o código do pedido (BRF1…) na mensagem.');let b;try{b=JSON.parse(td.decode(unb64(m[1])))}catch(e){return toast('O código do pedido veio incompleto. Peça para o cliente reenviar.')}
+    const c={id:uid(),name:b.nome||'',contact:b.empresa||'',code:newCode(),rev:1,brief:b,proposals:[]},P=newProp(TYPES[b.t]?b.t:'outro',b,A.vault);c.proposals.push(P);A.vault.clients.unshift(c);X.imp='';V.adm.cid=c.id;V.adm.pid=P.id;scheduleSave();render();toast('Pedido importado. Revise os valores.')},
+  copyInvite(){copy('Oi! Para eu montar seu orçamento certinho, responde estas perguntas rápidas (leva uns 2 minutos):\n'+(WEB?location.origin+location.pathname+'#b='+b64(te.encode(JSON.stringify(pickSt(S.studio)))):(S.studio.link||'[link do site]')+'\nToque em "Pedir orçamento".'),'Convite copiado.')},
+  copyCode(){copy(cur().c.code,'Código copiado.')},
+  async copyCliMsg(){const{c,P}=cur();if(noSent(c))return;const sent=c.proposals.filter(p=>p.status!=='rascunho');copy(cliMsg(c,P&&P.status!=='rascunho'?P:sent[sent.length-1]||c.proposals[c.proposals.length-1],await siteLink(c)),'Mensagem copiada.')},
+  async follow(d){const c=A.vault.clients.find(c=>c.id===d.c),P=c.proposals.find(p=>p.id===d.i);copy(followMsg(c,P,await siteLink(c)),'Lembrete copiado.')},
+  delCli(d){const{c}=cur();if(d.i==='ask'){X.del=c.id;return render()}A.vault.clients=A.vault.clients.filter(x=>x!==c);V.adm.cid=null;X.del=null;scheduleSave();render()},
+  delProp(d){const{c,P}=cur();if(d.i==='ask'){X.del=P.id;return render()}c.proposals=c.proposals.filter(x=>x!==P);c.rev++;V.adm.pid=null;X.del=null;scheduleSave();render()},
+  rm(d){getp(d.p).splice(+d.i,1);touched(d.p);render()},
+  rmPkg(d){const P=R.p;P.packages.splice(+d.i,1);P.rec=Math.min(P.rec,P.packages.length-1);touched('p');render()},
+  dupPkg(d){const P=R.p,k=JSON.parse(JSON.stringify(P.packages[+d.i]));k.name+=' (cópia)';P.packages.splice(+d.i+1,0,k);touched('p');render()},
+  addFact(){R.p.facts.push(['','']);touched('p');render()},
+  addBlank(d){R.p.packages[+d.i].items.push({name:'',desc:'',qty:1,price:0,cost:0});touched('p');render()},
+  addAddon(){R.p.addons.push({name:'',desc:'',price:0});touched('p');render()},
+  addPrice(){A.vault.prices.push({id:uid(),cat:'Extras',name:'',desc:'',unit:'un',price:0,cost:0});scheduleSave();render()},
+  newVer(){const P=R.p;P.ver++;P.created=today();P.validUntil=addDays(today(),+A.vault.terms.validDays||7);touched('p');render();toast('Versão '+P.ver+'. A validade foi renovada.')},
+  preview(){V.adm.prev=!V.adm.prev;render();try{scrollTo(0,0)}catch(e){}},
+  async chPw(){if(String(X.np).length<8)return toast('A nova senha precisa de pelo menos 8 caracteres.');const k=await derive(X.np,'a:'+S.salt,AITER);A.key=k.key;A.raw=k.raw;ss.set('rs-ak',A.raw);X.np='';await saveLocal();render();toast('Senha trocada. Publique para valer em outros aparelhos.')},
+  async backup(){await saveLocal();const data=JSON.stringify(S);if(!DL&&!WEB)return copy(data,'Cópia de segurança copiada. Cole em um arquivo de texto.');try{await saveFile('orcamentos-copia-'+today()+'.json',data)}catch(e){}},
+  discard(){ls.del('rs-local');A=null;ss.del('rs-ak');S=JSON.parse($('#rs-data').textContent);localAhead=false;render();toast('Voltou para a versão publicada.')},
+  async publish(){await saveLocal();if(!ART){canPub=false;return syncUi()}ss.set('rs-ak',A.raw);ss.set('rs-v',V);
+    try{await ART.publish(buildDoc(S));ls.del('rs-local');localAhead=false;syncUi();toast('Publicado. Os clientes já veem a versão nova.')}
+    catch(e){const code=e&&e.code;if(code==='conflict')toast('Outra versão foi publicada antes. A página vai recarregar e suas alterações continuam salvas neste aparelho.');
+      else if(code==='too_large')toast('Os dados passaram do limite de tamanho. Exclua orçamentos antigos e tente de novo.');
+      else if(code==='rate_limited'||code==='upstream_error')toast('Não deu para publicar agora. Espere um minuto e tente de novo.');
+      else{canPub=false;syncUi();toast('Este acesso é só de leitura. As alterações ficaram salvas neste aparelho.')}}}
+};
+const CH={
+  selPkg(el){const P=PAINT.P,s=getSel(P);s.pkg=+el.value;setSel(P,s);render()},
+  selAdd(el){const P=PAINT.P,s=getSel(P),i=+el.value;s.addons=el.checked?[...new Set([...s.addons,i])]:s.addons.filter(x=>x!==i);setSel(P,s);render()},
+  setRec(el){R.p.rec=+el.value;touched('p')},
+  addItem(el){const p=A.vault.prices.find(x=>x.id===el.value);if(!p)return;R.p.packages[+el.dataset.i].items.push({name:p.name,desc:p.desc,qty:1,price:p.price,cost:p.cost||0,cat:p.cat});touched('p');render()},
+  restore(el){const f=el.files&&el.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.vault||!o.salt)throw 0;o.rev=Math.max(o.rev||0,S.rev)+1;S=o;ls.set('rs-local',S);localAhead=true;A=null;ss.del('rs-ak');render();toast('Cópia restaurada. Entre com a senha dela.')}catch(e){toast('Este arquivo não é uma cópia de segurança válida.')}};r.readAsText(f)}
+};
+const run=(f,a,b)=>{if(f)Promise.resolve().then(()=>f(a,b)).catch(e=>{console.error(e);X.busy=false;toast('Algo deu errado. Tente de novo.')})};
+document.addEventListener('click',e=>{const el=e.target.closest('[data-a]');if(el){if(el.tagName==='A')e.preventDefault();return run(ACT[el.dataset.a],el.dataset,el)}
+  const a=e.target.closest('a[href^="#"]');if(a){e.preventDefault();const n=a.getAttribute('href').slice(1);if(VIEWS.includes(n)){if(n==='briefing'&&V.name!=='briefing')V.step=V.step||0;go(n)}}});
+document.addEventListener('submit',e=>{e.preventDefault();run(ACT[e.target.dataset.f],e.target.dataset,e.target)});
+document.addEventListener('input',e=>{const el=e.target,p=el.dataset&&el.dataset.b;if(!p)return;let v;
+  if(el.dataset.multi){v=(getp(p)||[]).filter(x=>x!==el.value);if(el.checked)v.push(el.value)}else v=el.type==='checkbox'?el.checked:el.type==='number'?(el.value===''?'':+el.value):el.value;
+  setp(p,v);touched(p);calcAll()});
+document.addEventListener('change',e=>{const el=e.target;if(!el.dataset)return;if(el.dataset.ch)run(CH[el.dataset.ch],el);else if(el.dataset.re!=null)setTimeout(render,0)});
+function readHash(){const h=location.hash.slice(1);
+  if(h.startsWith('o=')){if(LINK!==h.slice(2))C=null;LINK=h.slice(2);ls.set('rs-link',LINK);V.name='orcamento';return true}
+  if(h.startsWith('b=')){try{OV=pickSt(JSON.parse(td.decode(unb64(h.slice(2)))));ss.set('rs-st',OV)}catch(e){}V.name='briefing';return true}
+  if(VIEWS.includes(h)&&h!==V.name){V.name=h;return true}return false}
+addEventListener('hashchange',()=>{if(readHash()){X.err='';render()}});
+
+/* ---------- início ---------- */
+window.__rs={derive,seal,unseal,renderSheets,pdfFrom,demo,buildDoc,makeLink,pub,newProp,defaultVault,briefMsg,openCode,saveLocal,ACT,X,state:()=>({S,A,C,V,localAhead})};
+(async()=>{readHash();
+  const ak=ss.get('rs-ak');if(ak&&S.vault&&crypto.subtle){try{const k=await fromRaw(unb64(ak));A={key:k.key,raw:ak,vault:await unseal(k.key,S.vault)};const sv=ss.get('rs-v');if(sv){V=sv;ss.del('rs-v')}}catch(e){ss.del('rs-ak')}}
+  render();
+  const saved=ls.get('rs-code');if(saved&&!C&&V.name==='orcamento')openCode(saved,true).catch(()=>{});
+  const use=n=>window.claude&&window.claude.use?window.claude.use(n).catch(()=>null):Promise.resolve(null);
+  use('artifact').then(a=>{ART=a;syncUi()});use('downloads').then(d=>{DL=d});
+})();
+})();
+</script>
+</body>
+</html>
