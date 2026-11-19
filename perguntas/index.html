@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Ramom Orçamentos · Perguntas</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2314171A'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23C9301F'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna estreita de leitura, uma parte por tela, pensada para responder no celular. */
+:root{
+  --bg:#F1F3EF;--surface:#FFFFFF;--soft:#E5E9E2;--ink:#14171A;--muted:#566068;--line:#CDD3CC;
+  --accent:#C9301F;--accent-ink:#FFFFFF;--ok:#1B7A4B;--slate:#14171A;--slate-ink:#F4F5F2;
+  --f-d:"Barlow Condensed","Arial Narrow",Arial,sans-serif;--f-b:Figtree,"Segoe UI",system-ui,sans-serif;--f-m:"IBM Plex Mono",Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#101315;--surface:#191D21;--soft:#22272C;--ink:#ECEFEA;--muted:#9AA4AB;--line:#30373D;
+  --accent:#FF6450;--accent-ink:#1B0A07;--ok:#5CC592;--slate:#050607;--slate-ink:#F4F5F2;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--f-b)}
+.wrap{max-width:720px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.clap{height:30px;background:repeating-linear-gradient(-60deg,var(--slate-ink) 0 24px,var(--slate) 24px 48px);border-bottom:3px solid var(--slate-ink)}
+.top{background:var(--slate);color:var(--slate-ink)}
+.top .wrap{padding-block:14px 16px;display:grid;gap:10px}
+.brand{font:700 1.3rem/1 var(--f-d);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:10px}
+.rec{width:11px;height:11px;border-radius:50%;background:#E0402E}
+.prog{display:flex;justify-content:space-between;gap:12px;font:500 .74rem var(--f-m);letter-spacing:.1em;text-transform:uppercase;color:#98A1A6}
+.track{height:4px;background:#30373D;border-radius:2px;overflow:hidden}
+.track i{display:block;height:100%;background:#E0402E;transition:width .25s}
+main{padding-block:28px 48px;display:grid;gap:28px}
+h1,h2{font-family:var(--f-d);text-transform:uppercase;margin:0;text-wrap:balance;letter-spacing:.01em}
+h1{font-weight:700;font-size:clamp(2.2rem,8vw,3.4rem);line-height:.96}
+h2{font-weight:600;font-size:1.55rem;line-height:1.08}
+p{margin:0}
+.lead{font-size:1.1rem;color:var(--muted)}
+.eyebrow,.num{font:500 .76rem var(--f-m);letter-spacing:.13em;text-transform:uppercase;color:var(--accent)}
+.intro{display:grid;gap:16px}
+.how{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.how li{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding-top:10px;border-top:1px solid var(--line)}
+.how b{font:700 1.5rem/1 var(--f-d);color:var(--accent)}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px;display:grid;gap:12px;min-width:0}
+.why{background:var(--soft);border-radius:6px;padding:10px 12px;font-size:.93rem;color:var(--muted)}
+.why b{color:var(--ink)}
+.opts{display:grid;gap:8px}
+.opt{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start;padding:12px 14px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer}
+.opt.on{border-color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.opt input{width:20px;height:20px;margin:2px 0 0;accent-color:var(--accent)}
+.ol{font-weight:600;min-width:0}
+.ol em{font:500 .66rem var(--f-m);font-style:normal;letter-spacing:.08em;text-transform:uppercase;color:var(--ok);border:1px solid currentColor;border-radius:4px;padding:.1rem .4rem;margin-left:6px;white-space:nowrap}
+.ol small{display:block;font-weight:400;font-size:.9rem;color:var(--muted);margin-top:2px}
+.hint{font-size:.86rem;color:var(--muted)}
+.free{display:grid;gap:6px}
+.free span{font-size:.9rem;font-weight:600;color:var(--muted)}
+textarea{width:100%;padding:.7rem .8rem;border:1.5px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);font:400 16px/1.45 var(--f-b);resize:vertical}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:.85rem 1.3rem;background:var(--accent);color:var(--accent-ink);border:2px solid var(--accent);border-radius:6px;font:600 1rem var(--f-b);text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.lnk{background:none;border:0;padding:0;font:inherit;color:var(--accent);text-decoration:underline;cursor:pointer}
+.sum{margin:0;display:grid;gap:12px}
+.sum div{border-top:1px solid var(--line);padding-top:10px}
+.sum dt{font-weight:600}
+.sum dd{margin:2px 0 0;color:var(--muted);overflow-wrap:anywhere;white-space:pre-line}
+.note{background:var(--soft);border-radius:6px;padding:10px 14px;font-size:.93rem}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:.6rem 1rem;border-radius:6px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s;max-width:calc(100% - 32px)}
+#toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.track i,#toast{transition:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="clap" aria-hidden="true"></div><div class="wrap"><div class="brand"><i class="rec"></i>Ramom Orçamentos</div><div class="prog"><span id="pl"></span><span id="pr"></span></div><div class="track"><i id="pb"></i></div></div></header>
+<main class="wrap" id="app"></main>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+(()=>{'use strict';
+const SITE='https://gabusallescontato-ai.github.io/ramom-orcamentos/';
+const P=[
+{t:'Seu trabalho hoje',d:'Para o site calcular do seu jeito, e não de um jeito genérico.',q:[
+ {id:'servicos',m:1,q:'Quais trabalhos você mais orça?',why:'Cada tipo de trabalho vira um roteiro de perguntas para o cliente e um modelo de proposta. Começamos pelos que você mais vende.',
+  o:[{l:'Eventos corporativos'},{l:'Casamentos e festas'},{l:'Edição para YouTube'},{l:'Reels e redes sociais'},{l:'Institucional e comercial'},{l:'Clipes e shows'},{l:'Podcast e videocast'}],ph:'Algum outro tipo? Qual é o mais lucrativo?'},
+ {id:'volume',q:'Quantos orçamentos você faz por mês?',why:'O volume diz o quanto vale automatizar. Com poucos, basta agilidade. Com muitos, você precisa de busca, filtros e lembretes.',
+  o:[{l:'Até 5'},{l:'De 6 a 15'},{l:'De 16 a 30'},{l:'Mais de 30'}],ph:'Quantos desses costumam fechar?'},
+ {id:'preco',q:'Como você chega no preço hoje?',why:'O site monta o orçamento a partir da sua lógica de preço. Preciso copiar a sua, não inventar uma.',
+  o:[{l:'Tabela fixa por serviço',rec:1,h:'É o que permite o orçamento nascer quase pronto.'},{l:'Diária de captação mais edição por hora'},{l:'Pacotes fechados'},{l:'Calculo de cabeça, caso a caso'}],ph:'Conte como você pensa o preço'},
+ {id:'variaveis',m:1,q:'O que mais faz o valor mudar?',why:'O que você marcar aqui vira pergunta obrigatória para o cliente e regra automática de cálculo.',
+  o:[{l:'Horas de captação'},{l:'Tamanho do evento ou do público'},{l:'Deslocamento'},{l:'Equipe e número de câmeras'},{l:'Prazo apertado'},{l:'Duração do vídeo final'},{l:'Quantidade de material bruto'},{l:'Drone'},{l:'Número de entregas (versões e cortes)'}],ph:'Tem algo que muda muito o preço e não está na lista?'},
+ {id:'tabela',q:'Você pode mandar sua tabela de preços atual?',why:'Hoje o site está com valores de exemplo. Com os seus, os orçamentos já saem certos desde o primeiro.',
+  o:[{l:'Mando foto ou arquivo no WhatsApp',rec:1,h:'É o caminho mais rápido para o site ficar pronto para uso.'},{l:'Explico por áudio'},{l:'Não tenho tabela, vamos montar juntos'}],ph:'Se quiser, já escreva aqui os principais valores'}]},
+{t:'O pedido do cliente',d:'O link que você manda no lugar de fazer as perguntas uma a uma.',q:[
+ {id:'canais',m:1,q:'Por onde os pedidos de orçamento chegam?',why:'Define onde o link de pedido precisa estar: bio do Instagram, resposta rápida do WhatsApp, assinatura de e-mail.',
+  o:[{l:'WhatsApp'},{l:'Direct do Instagram'},{l:'Indicação'},{l:'E-mail'},{l:'Site ou Google'}]},
+ {id:'tamanho',q:'Quanto tempo o cliente topa gastar respondendo?',why:'Pergunta demais faz o cliente desistir no meio. Pergunta de menos traz você de volta ao vai e vem.',
+  o:[{l:'Uns 2 minutos, cerca de 8 perguntas',rec:1,h:'Formulário curto é respondido até o fim. É como o site está hoje.'},{l:'Uns 5 minutos, bem completo'},{l:'O mínimo possível, 4 perguntas'}]},
+ {id:'verba',q:'Perguntar ao cliente quanto ele pretende investir?',why:'Saber a faixa evita montar uma proposta fora da realidade dele. Mas tem cliente que não gosta de dizer.',
+  o:[{l:'Sim, como pergunta opcional',rec:1,h:'Quem responde te poupa tempo. Quem não quer, pula.'},{l:'Sim, obrigatória'},{l:'Não perguntar'}]},
+ {id:'previa',q:'O cliente deve ver algum preço antes de falar com você?',why:'Mostrar preço cedo filtra curiosos, mas pode espantar quem fecharia depois de entender o seu trabalho.',
+  o:[{l:'Não, preço só na proposta',rec:1,h:'Você mantém o controle e evita ser comparado só pelo valor.'},{l:'Mostrar um "a partir de" por serviço'},{l:'Estimativa automática na hora'}]},
+ {id:'faltou',q:'Que pergunta você sempre faz ao cliente e não pode faltar?',why:'Você conhece os detalhes que derrubam um orçamento. Quero garantir que nenhum fique de fora.',ph:'Ex.: se o local tem energia, se vai ter telão, se precisa de nota fiscal'}]},
+{t:'A proposta',d:'O que o cliente abre com o código e baixa em PDF.',q:[
+ {id:'pacotes',q:'Você prefere oferecer pacotes ou um valor único?',why:'É a decisão que mais mexe no fechamento. Com um valor só, o cliente responde sim ou não. Com pacotes, ele escolhe qual.',
+  o:[{l:'Três pacotes, com um recomendado',rec:1,h:'O do meio costuma ser o mais escolhido, e o maior valoriza os outros.'},{l:'Dois pacotes'},{l:'Valor único'},{l:'Depende do trabalho'}]},
+ {id:'itens',q:'Mostrar o valor de cada item ou só o total?',why:'Valor item por item passa transparência, mas abre espaço para o cliente negociar linha por linha.',
+  o:[{l:'Só o total de cada pacote',rec:1,h:'O cliente compara pacotes, não itens.'},{l:'Valor item por item'},{l:'Decido em cada orçamento'}]},
+ {id:'conteudo',m:1,q:'O que não pode faltar na proposta?',why:'Hoje ela tem o projeto, os pacotes, os combinados e os próximos passos. O resto entra conforme a sua resposta.',
+  o:[{l:'Vídeos do meu portfólio'},{l:'Quem sou eu'},{l:'Depoimentos de clientes'},{l:'Cronograma'},{l:'Formas de pagamento'},{l:'O que não está incluso'},{l:'Contrato ou termos'}]},
+ {id:'formato',q:'Qual deve ser o formato padrão da proposta?',why:'É o problema que você contou no áudio: horizontal é ruim no celular, vertical é ruim no computador.',
+  o:[{l:'Automático: vertical no celular, horizontal no computador',rec:1,h:'Ninguém precisa escolher, e o cliente ainda pode trocar com um toque.'},{l:'Sempre vertical'},{l:'Sempre horizontal'},{l:'Pergunto a cada cliente'}]},
+ {id:'marca',q:'Como está a sua marca?',why:'A proposta é a sua cara para o cliente. Com logo e cores, ela deixa de parecer um modelo pronto.',
+  o:[{l:'Tenho logo e cores, vou mandar',rec:1},{l:'Só tenho o logo'},{l:'Não tenho, pode manter o visual atual'},{l:'Quero criar uma identidade'}],ph:'Tem alguma proposta ou site que você acha bonito? Cole o link'}]},
+{t:'Os combinados',d:'O que protege você de calote, retrabalho e data presa.',q:[
+ {id:'validade',q:'Por quantos dias o orçamento vale?',why:'Prazo de validade dá um motivo para o cliente decidir e libera você para reajustar ou vender a data.',
+  o:[{l:'3 dias'},{l:'7 dias',rec:1,h:'Tempo para decidir sem deixar a sua agenda presa.'},{l:'15 dias'},{l:'30 dias'}]},
+ {id:'pagamento',q:'Como você divide o pagamento?',why:'O sinal é o que transforma "vou ver" em compromisso, e a regra fica escrita na proposta.',
+  o:[{l:'50% para reservar a data e 50% na entrega',rec:1,h:'É o mais comum e protege a sua agenda.'},{l:'30% de sinal e 70% na entrega'},{l:'100% antecipado'},{l:'Parcelado no cartão'},{l:'Varia conforme o cliente'}]},
+ {id:'receber',m:1,q:'Como você recebe?',why:'As formas de pagamento aparecem na proposta, e a nota fiscal muda o valor final para empresa.',
+  o:[{l:'PIX'},{l:'Transferência'},{l:'Cartão'},{l:'Boleto'},{l:'Emito nota fiscal'}]},
+ {id:'ajustes',q:'Quantas rodadas de ajuste entram no preço?',why:'Ajuste sem limite é o que mais come o lucro de quem edita. Com o número escrito, o extra vira cobrança, não favor.',
+  o:[{l:'1 rodada'},{l:'2 rodadas',rec:1,h:'É o padrão do mercado.'},{l:'3 rodadas'},{l:'Sem limite'}],ph:'Quanto você cobra pela rodada extra? E pela hora extra de gravação?'},
+ {id:'aprovacao',q:'Como o cliente deve aprovar?',why:'Quanto mais formal, mais proteção para você e mais passos para o cliente fechar.',
+  o:[{l:'Mensagem pronta no WhatsApp',rec:1,h:'É como funciona hoje: um toque, sem cadastro.'},{l:'Botão "Aceito", com nome e data registrados'},{l:'Contrato com assinatura digital'}]}]},
+{t:'Seu dia a dia',d:'Para decidir o que vale a pena construir agora.',q:[
+ {id:'aparelho',q:'De onde você monta os orçamentos?',why:'Hoje os dados ficam guardados em um aparelho só. Se você usa mais de um, preciso pôr um servidor por trás.',
+  o:[{l:'Só do celular'},{l:'Só do computador'},{l:'Dos dois'}]},
+ {id:'equipe',q:'Mais alguém monta orçamento além de você?',why:'Com mais de uma pessoa, o site precisa de login e de dados compartilhados.',
+  o:[{l:'Só eu'},{l:'Eu e mais uma pessoa'},{l:'Uma equipe'}]},
+ {id:'extras',m:1,q:'O que faria diferença de verdade para você?',why:'Tudo isto é possível, mas exige um servidor. Só vale montar o que você vai usar.',
+  o:[{l:'Saber quando o cliente abriu a proposta'},{l:'O link do cliente se atualizar sozinho quando eu mudo o orçamento'},{l:'Aviso quando um orçamento está para vencer'},{l:'Ver quanto orcei e quanto fechei no mês'},{l:'Nada disso por enquanto'}]},
+ {id:'depois',m:1,q:'Depois do "aprovado", o que precisa acontecer?',why:'O orçamento é só o começo. Dá para o mesmo link cuidar do que vem depois.',
+  o:[{l:'Enviar o contrato'},{l:'Cobrar o sinal, com PIX no valor certo'},{l:'Reservar a data na agenda'},{l:'Checklist de gravação'},{l:'Entregar os vídeos pelo mesmo link'},{l:'Nada, sigo pelo WhatsApp'}]}]},
+{t:'Para fechar',d:'Seus dados e o que mais importa para você.',q:[
+ {id:'nome',q:'Que nome deve aparecer no site e na proposta?',why:'Hoje aparece "Ramom". Pode ser o seu nome, o da produtora ou os dois.',ph:'Ex.: Ramom Filmes'},
+ {id:'contatos',q:'Quais contatos entram no site?',why:'Os pedidos e as aprovações vão direto para este WhatsApp.',ph:'WhatsApp com DDD, Instagram e cidade'},
+ {id:'endereco',q:'Qual endereço o site deve ter?',why:'Um endereço próprio passa mais confiança, mas tem custo anual.',
+  o:[{l:'Pode ficar no endereço gratuito por enquanto',rec:1,h:'Custo zero até você validar no dia a dia.'},{l:'Já tenho um domínio'},{l:'Quero registrar um domínio'}],ph:'Se já tem ou já pensou em um nome, escreva aqui'},
+ {id:'prioridade',q:'O que é mais urgente para você?',why:'Define por onde eu começo os ajustes.',
+  o:[{l:'Receber os pedidos já organizados'},{l:'Uma proposta mais bonita'},{l:'Montar o orçamento mais rápido'},{l:'Controlar o que foi fechado'}]},
+ {id:'dor',q:'O que mais te irrita hoje na hora de fazer um orçamento?',why:'A melhor função do site costuma sair desta resposta.',ph:'Pode desabafar'}]}];
+const TOTAL=P.reduce((n,s)=>n+s.q.length,0);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s);
+let R={},step=0;
+try{R=JSON.parse(localStorage.getItem('rs-perg'))||{}}catch(e){}
+const save=()=>{try{localStorage.setItem('rs-perg',JSON.stringify(R))}catch(e){}};
+const find=id=>{for(const s of P)for(const q of s.q)if(q.id===id)return q};
+const ans=q=>{const r=R[q.id]||{},v=Array.isArray(r.v)?r.v.join(', '):r.v||'';return[v,(r.t||'').trim()].filter(Boolean).join('\n')};
+const done=()=>P.reduce((n,s)=>n+s.q.filter(q=>ans(q)).length,0);
+function message(){let n=0;const out=['*Site de orçamentos · respostas do Ramom*',''];P.forEach(s=>s.q.forEach(q=>{n++;const a=ans(q);if(a)out.push('*'+n+'. '+q.q+'*',a,'')}));out.push('Respondidas: '+done()+' de '+TOTAL);return out.join('\n')}
+function qHtml(q,n){const r=R[q.id]||{};let h='<section class="q"><p class="num">Pergunta '+n+' de '+TOTAL+'</p><h2 id="h-'+q.id+'">'+esc(q.q)+'</h2><p class="why"><b>Por que pergunto:</b> '+esc(q.why)+'</p>';
+  if(q.o)h+='<div class="opts" role="group" aria-labelledby="h-'+q.id+'">'+q.o.map((o,i)=>{const on=q.m?(r.v||[]).includes(o.l):r.v===o.l;return'<label class="opt'+(on?' on':'')+'"><input type="'+(q.m?'checkbox':'radio')+'" name="'+q.id+'" value="'+i+'" '+(on?'checked':'')+'><span class="ol">'+esc(o.l)+(o.rec?'<em>Recomendado</em>':'')+(o.h?'<small>'+esc(o.h)+'</small>':'')+'</span></label>'}).join('')+'</div>'+(q.m?'<p class="hint">Pode marcar mais de uma.</p>':'');
+  return h+'<label class="free"><span>'+(q.o?'Prefere responder do seu jeito, ou quer completar?':'Sua resposta')+'</span><textarea id="t-'+q.id+'" data-t="'+q.id+'" rows="'+(q.o?2:3)+'" placeholder="'+esc(q.ph||'Escreva aqui, se quiser')+'">'+esc(r.t||'')+'</textarea></label></section>'}
+function render(){const app=$('#app'),last=P.length+1;let h='';
+  if(step===0)h='<div class="intro"><p class="eyebrow">Para o Ramom</p><h1>Vamos deixar o site do seu jeito.</h1><p class="lead">A primeira versão do site de orçamentos já está no ar. Para ajustar ao seu jeito de trabalhar, preciso das suas respostas.</p>'+
+    '<ol class="how"><li><b>1</b><span>São '+TOTAL+' perguntas em '+P.length+' partes. Leva uns 8 minutos e dá para parar e voltar: as respostas ficam salvas neste aparelho.</span></li>'+
+    '<li><b>2</b><span>Cada pergunta diz por que estou perguntando e traz opções prontas. Onde existe um caminho que costuma funcionar melhor, ele vem marcado como <b style="font:inherit;color:var(--ok);font-weight:600">Recomendado</b>. Concordou, é só tocar.</span></li>'+
+    '<li><b>3</b><span>Nenhuma é obrigatória, e em todas você pode escrever do seu jeito.</span></li></ol>'+
+    '<p class="note">Quer ver o site antes? Abra <a href="'+SITE+'" target="_blank" rel="noopener">'+SITE.replace('https://','')+'</a> e digite <b>DEMO</b> no campo do código para ver um orçamento de exemplo.</p>'+
+    '<div class="row"><button class="btn" data-go="1">'+(done()?'Continuar de onde parei':'Começar')+'</button></div></div>';
+  else if(step<last){const s=P[step-1];let n=P.slice(0,step-1).reduce((a,x)=>a+x.q.length,0);
+    h='<div><p class="eyebrow">Parte '+step+' de '+P.length+'</p><h1>'+esc(s.t)+'</h1><p class="lead" style="margin-top:10px">'+esc(s.d)+'</p></div>'+s.q.map(q=>qHtml(q,++n)).join('')+
+      '<div class="row"><button class="btn ghost" data-go="'+(step-1)+'">Voltar</button><button class="btn" data-go="'+(step+1)+'">'+(step===P.length?'Revisar respostas':'Continuar')+'</button></div>'}
+  else{const msg=message();
+    h='<div><p class="eyebrow">Revisão</p><h1>Confira e envie</h1><p class="lead" style="margin-top:10px">Você respondeu '+done()+' de '+TOTAL+' perguntas.</p></div>'+
+      '<div class="row"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent(msg)+'">Enviar pelo WhatsApp</a><button class="btn ghost" data-copy>Copiar respostas</button></div>'+
+      '<p class="note">O botão abre o WhatsApp com as respostas já escritas. Escolha a conversa com o Gabu e toque em enviar. Se o WhatsApp não abrir, use "Copiar respostas" e cole na conversa.</p>'+
+      '<dl class="sum q">'+P.map(s=>s.q.filter(q=>ans(q)).map(q=>'<div><dt>'+esc(q.q)+'</dt><dd>'+esc(ans(q))+'</dd></div>').join('')).join('')+'</dl>'+
+      '<div class="row"><button class="btn ghost" data-go="'+P.length+'">Voltar e ajustar</button><button class="lnk" data-clear>Apagar tudo e recomeçar</button></div>'}
+  app.innerHTML=h;$('#pl').textContent=step===0?'Antes de começar':step<last?'Parte '+step+' de '+P.length:'Revisão';$('#pr').textContent=done()+' de '+TOTAL+' respondidas';$('#pb').style.width=Math.round(done()/TOTAL*100)+'%'}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('on'),3000)}
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){step=+g.dataset.go;render();scrollTo(0,0);return}
+  if(e.target.closest('[data-copy]')){const m=message(),fail=()=>{const d=document.createElement('textarea');d.value=m;d.rows=10;d.readOnly=true;$('#app').prepend(d);d.focus();d.select();toast('Selecione o texto e copie.')};try{navigator.clipboard.writeText(m).then(()=>toast('Respostas copiadas. Cole no WhatsApp.'),fail)}catch(x){fail()}return}
+  const c=e.target.closest('[data-clear]');if(c){if(c.dataset.clear==='go'){R={};save();step=0;render();scrollTo(0,0)}else{c.dataset.clear='go';c.textContent='Confirmar: apagar todas as respostas'}}});
+document.addEventListener('change',e=>{const el=e.target;if(!el.name||!find(el.name))return;const q=find(el.name),r=R[q.id]||(R[q.id]={}),l=q.o[+el.value].l;
+  if(q.m){r.v=(r.v||[]).filter(x=>x!==l);if(el.checked)r.v.push(l);el.closest('.opt').classList.toggle('on',el.checked)}
+  else{r.v=l;el.closest('.opts').querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.contains(el)))}
+  save();$('#pr').textContent=done()+' de '+TOTAL+' respondidas';$('#pb').style.width=Math.round(done()/TOTAL*100)+'%'});
+document.addEventListener('input',e=>{const id=e.target.dataset&&e.target.dataset.t;if(!id)return;(R[id]||(R[id]={})).t=e.target.value;save()});
+window.__q={message,done,TOTAL,state:()=>({R,step}),go:n=>{step=n;render()}};
+render();
+})();
+</script>
+</body>
+</html>
