@@ -162,7 +162,8 @@ h2.big span{color:var(--accent)}
 .vf i:nth-of-type(3){bottom:12px;left:12px;border-right:0;border-top:0}.vf i:nth-of-type(4){bottom:12px;right:12px;border-left:0;border-top:0}
 .vf-r{position:absolute;top:17px;left:46px;font:700 .64rem var(--f-b);letter-spacing:.22em;color:var(--accent)}
 .vf-t{position:absolute;bottom:16px;right:46px;font:500 .7rem var(--f-m);color:var(--muted)}
-.vf-c{position:absolute;inset:0;display:grid;place-items:center;font:600 .68rem var(--f-b);letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.vf.ph{background:url(img/retrato.jpg) center/cover no-repeat,#12151c}
+.vf-e{position:absolute;left:40px;bottom:12px;margin:0;background:rgba(8,9,13,.7)}
 .bio{font-size:1.06rem;max-width:60ch;white-space:pre-line;color:var(--muted)}
 .svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .svc>*{background:var(--surface);border:1px solid var(--line);padding:20px;margin:0;display:grid;gap:8px;align-content:start;min-width:0}
@@ -172,7 +173,7 @@ h2.big span{color:var(--accent)}
 .pfg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:820px){.pfg{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.pfg{grid-template-columns:1fr}}
-.pf{position:relative;aspect-ratio:16/10;display:grid;align-content:end;gap:4px;padding:16px;text-decoration:none;border:1px solid var(--line);overflow:hidden;min-width:0;background:linear-gradient(140deg,hsl(var(--h) 55% 24%) 0%,#12151c 62%,#0c0d12 100%)}
+.pf{position:relative;aspect-ratio:16/10;display:grid;align-content:end;gap:4px;padding:16px;text-decoration:none;border:1px solid var(--line);overflow:hidden;min-width:0;background:linear-gradient(to top,rgba(8,9,13,.94) 0%,rgba(8,9,13,.3) 52%,rgba(8,9,13,.05) 100%),var(--img,none) center/cover no-repeat,linear-gradient(140deg,hsl(var(--h) 55% 24%) 0%,#12151c 62%,#0c0d12 100%)}
 .pf b{position:absolute;top:10px;right:14px;font:800 2.6rem/1 var(--f-d);color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.3)}
 .pf h3{margin:0}
 .pf span{font:700 .66rem var(--f-b);letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
@@ -249,10 +250,11 @@ const pickSt=s=>{const o={};if(!s)return o;['name','tagline','city','whats','ins
   ['portfolio','depo'].forEach(k=>{if(Array.isArray(s[k])&&s[k].length&&JSON.stringify(s[k])!==JSON.stringify(BAKED[k]||[]))o[k]=s[k].slice(0,6).map(r=>[String(r&&r[0]||'').slice(0,k==='depo'?260:60),String(r&&r[1]||'').slice(0,160)])});return o};
 const safeUrl=u=>/^https?:\/\//i.test(u)?u:'https://'+String(u).replace(/^[a-z]+:/i,'').replace(/^\/+/,'');
 /* Conteúdo de exemplo da página inicial: só aparece enquanto o real não chega, sempre com a etiqueta "Exemplo". Nunca entra em proposta. */
-const EX={bio:'Sou o Ramom, filmmaker e editor. Cuido do vídeo do roteiro à entrega, com prazo combinado e tudo por escrito.\n\nEste texto é um exemplo. Aqui entra a sua história, em poucas linhas.',
-  portfolio:[['Reels para marca local','Redes sociais'],['Canal no YouTube','YouTube'],['Curso online em 12 aulas','Cursos'],['Convenção de vendas','Eventos'],['Feira de negócios','Eventos'],['Série de cortes','Redes sociais']],
-  depo:[['Aqui entra a fala de um cliente sobre como foi trabalhar com você.','Nome do cliente · Empresa'],['Um depoimento curto e específico vale mais que um elogio genérico.','Nome do cliente · Empresa'],['Peça uma frase a cada um dos seus três melhores clientes.','Nome do cliente · Empresa']],
-  nums:[['+000','vídeos entregues'],['+00','clientes atendidos'],['0 anos','de estrada']],clients:['Marca 01','Marca 02','Marca 03','Marca 04','Marca 05','Marca 06']};
+const EX={bio:'Sou o Ramom, filmmaker e editor. Há seis anos ajudo marcas, professores e empresas a transformar ideias em vídeos que as pessoas assistem até o fim.\n\nCuido de tudo, do roteiro à entrega: gravo, edito e combino cada etapa por escrito, com prazo e valor fechados antes de começar.',
+  portfolio:[['Reels para marca local','Redes sociais','reels'],['Canal no YouTube','YouTube','youtube'],['Curso online em 12 aulas','Cursos','curso'],['Convenção de vendas','Eventos','convencao'],['Feira de negócios','Eventos','feira'],['Série de cortes','Redes sociais','cortes']],
+  depo:[['O Ramom entendeu o que a gente queria na primeira conversa. O vídeo saiu antes do prazo e virou o conteúdo mais visto do nosso perfil.','Marina Lopes · Café Aurora'],['Gravamos 14 aulas em dois dias, e a edição manteve o mesmo padrão do começo ao fim. Lançamos o curso sem retrabalho.','Rafael Nunes · Escola Horizonte'],['Cobriu a nossa convenção inteira. No dia seguinte já tínhamos o vídeo resumo para mandar aos patrocinadores.','Carla Menezes · Grupo Tucumã']],
+  nums:[['+180','vídeos entregues'],['+40','clientes atendidos'],['6 anos','de estrada']],clients:['Café Aurora','Escola Horizonte','Grupo Tucumã','Clínica Vitalis','Norte Engenharia','Maré Eventos']};
+const ytThumb=u=>{const m=String(u).match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/)([\w-]{11})/);return m?'https://i.ytimg.com/vi/'+m[1]+'/hqdefault.jpg':''};
 const pub=()=>(V.name!=='estudio'&&OV?{...S.studio,...OV}:S.studio);
 let D=ls.get('rs-draft')||{t:''};
 const X={code:'',pw:'',pw2:'',imp:'',np:'',err:'',copy:null,ptype:'evento',busy:false};
@@ -578,11 +580,11 @@ function vHome(){return'<section class="hero"><div class="hero-t"><p class="gw" 
   '<li><b>'+esc(pub().name)+' monta a proposta</b><span>Com pacotes, o que está incluso, prazo e condições, tudo por escrito.</span></li>'+
   '<li><b>Você abre com seu código</b><span>Escolhe o pacote, baixa em PDF na vertical ou na horizontal e aprova pelo WhatsApp.</span></li></ol></section>'+
   '<section class="cta"><h2 class="big">Vamos tirar o seu vídeo do papel?</h2><p>Responda em dois minutos e receba uma proposta sob medida.</p><a class="btn" href="#briefing">Pedir orçamento</a></section>'}
-const pfCards=(por,ex)=>'<div class="pfg">'+por.map((d,i)=>{const n='<b>'+String(i+1).padStart(2,'0')+'</b><h3>'+esc(d[0]||'Vídeo')+'</h3>',st=' style="--h:'+((200+i*47)%360)+'"';
+const pfCards=(por,ex)=>'<div class="pfg">'+por.map((d,i)=>{const n='<b>'+String(i+1).padStart(2,'0')+'</b><h3>'+esc(d[0]||'Vídeo')+'</h3>',im=ex?'img/'+d[2]+'.jpg':ytThumb(d[1]),st=' style="--h:'+((200+i*47)%360)+(im?';--img:url('+im+')':'')+'"';
   return ex?'<div class="pf"'+st+'>'+n+'<span>'+esc(d[1])+'</span></div>':'<a class="pf"'+st+' target="_blank" rel="noopener" href="'+esc(safeUrl(d[1]))+'">'+n+'<span>Assistir</span></a>'}).join('')+'</div>';
 function homeMore(){const st=pub(),por=(st.portfolio||[]).filter(d=>d[1]),dep=(st.depo||[]).filter(d=>d[0]),words=['Reels','YouTube','Cursos','Videoaulas','Eventos','Networking','Edição','Captação'];
   return'<div class="mq" aria-hidden="true"><div>'+[0,1].map(()=>words.map(w=>'<span>'+w+'</span>').join('')).join('')+'</div></div>'+
-   '<section class="band about"><div class="vf"><i></i><i></i><i></i><i></i><span class="vf-r">● REC</span><span class="vf-t">00:00:18:11</span><span class="vf-c">Foto do Ramom</span></div><div class="stack"><p class="kick">Quem faz'+(st.bio?'':exTag)+'</p><h2 class="big">Do roteiro à <span>entrega</span>.</h2><p class="bio">'+esc(st.bio||EX.bio)+'</p></div></section>'+
+   '<section class="band about"><div class="vf ph"><i></i><i></i><i></i><i></i><span class="vf-r">● REC</span><span class="vf-t">00:00:18:11</span><span class="ex vf-e">Exemplo</span></div><div class="stack"><p class="kick">Quem faz'+(st.bio?'':exTag)+'</p><h2 class="big">Do roteiro à <span>entrega</span>.</h2><p class="bio">'+esc(st.bio||EX.bio)+'</p></div></section>'+
    '<section class="band"><p class="kick">O que eu faço</p><h2 class="big">Vídeo para <span>cada momento</span> do seu negócio</h2><div class="svc">'+
    [['Redes sociais e YouTube','Reels, cortes e vídeos para o canal, da captação à edição.'],['Cursos e videoaulas','Gravação e edição de aulas, com vinheta, letterings e o mesmo padrão do começo ao fim.'],['Cobertura de eventos','Corporativos, aniversários, feiras e encontros de networking.']].map((v,i)=>'<article><b>0'+(i+1)+'</b><h3>'+v[0]+'</h3><p>'+v[1]+'</p></article>').join('')+'</div></section>'+
    '<section class="band"><p class="kick">Portfólio'+(por.length?'':exTag)+'</p><h2 class="big">Trabalhos <span>recentes</span></h2>'+(por.length?pfCards(por):pfCards(EX.portfolio,1))+'</section>'+
